@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import type { FormEvent, MouseEvent, PointerEvent as ReactPointerEvent } from 'react'
+import type { CSSProperties, FormEvent, MouseEvent, PointerEvent as ReactPointerEvent } from 'react'
 import { animate, stagger } from 'animejs'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
@@ -575,7 +575,7 @@ function App() {
               <span className="live-dot" />
               Независимый реестр работодателей
             </motion.div>
-            <motion.h1 variants={reveal}>Знайте, куда<br />вы устраиваетесь.</motion.h1>
+            <motion.h1 variants={reveal}><span className="hero-title-accent"><span className="hero-title-word">Знайте</span><svg className="hero-title-loop" viewBox="0 0 220 76" aria-hidden="true"><path pathLength="1" d="M 110 8 C 174 5, 217 18, 211 39 C 205 62, 161 70, 105 68 C 48 67, 9 57, 9 38 C 9 17, 50 8, 110 8 C 150 7, 186 13, 203 26" /></svg></span>, куда<br />вы устраиваетесь.</motion.h1>
             <motion.p className="hero-lede" variants={reveal}>
               Отзывы сотрудников, сигналы культуры и проверенная история компании в одном честном отчёте.
             </motion.p>
@@ -756,7 +756,7 @@ function App() {
 
             <div className="report-overview">
               <div className="overall-score">
-                <div className="score-ring large-ring"><span>{entry.score}</span><small>{entry.hasData ? '/ 5' : ''}</small></div>
+                <ScoreRing value={entry.score} suffix={entry.hasData ? '/ 5' : ''} />
                 <div><p>Общая оценка</p><strong>{entry.recommendation}</strong><span>на основе {entry.reviews}</span></div>
               </div>
               <div className="rating-list">
@@ -893,6 +893,12 @@ type DashboardProps = {
   prefersReducedMotion: boolean
   onBack: () => void
   onNotice: (message: string) => void
+}
+
+function ScoreRing({ value, suffix, className = 'large-ring' }: { value: string; suffix: string; className?: string }) {
+  const numericValue = Number.parseFloat(value)
+  const progress = Number.isFinite(numericValue) ? Math.min(100, Math.max(0, numericValue / 5 * 100)) : 0
+  return <div className={`score-ring ${className}`} style={{ '--score-progress': `${progress}%` } as CSSProperties}><span>{value}</span><small>{suffix}</small></div>
 }
 
 function CompanyDirectoryPreview({ prefersReducedMotion, onBack }: { prefersReducedMotion: boolean; onBack: () => void }) {
