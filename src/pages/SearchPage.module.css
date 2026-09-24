@@ -8,7 +8,7 @@
 .hero h1 { font-size: clamp(34px, 5.2vw, 56px); font-weight: 750; letter-spacing: -.03em; line-height: 1.02; margin: 14px 0 28px; max-width: 14em; }
 .hero h1 span { color: var(--c-dark-muted); display: block; font-weight: 500; }
 .searchField { align-items: center; background: var(--c-surface-raised); border: 1px solid transparent; color: var(--c-muted); display: flex; gap: 12px; height: 58px; max-width: 640px; padding: 0 8px 0 18px; transition: border-color .2s ease, box-shadow .2s ease; }
-.searchField:focus-within { border-color: var(--c-accent); box-shadow: 0 0 0 4px rgba(111, 147, 221, .25); }
+.searchField:focus-within { border-color: var(--c-accent); box-shadow: 0 0 0 4px rgba(255, 45, 149, .25); }
 .searchField input { background: transparent; border: 0; color: var(--c-ink); flex: 1; font-size: 16px; min-width: 0; outline: 0; }
 .searchField input::-webkit-search-cancel-button { display: none; }
 .searchField button { align-items: center; background: transparent; border: 0; color: var(--c-muted); display: inline-flex; height: 40px; justify-content: center; width: 40px; }
@@ -26,8 +26,8 @@
 .filtersToggle { align-items: center; background: var(--c-surface-raised); border: 1px solid var(--c-line); color: var(--c-ink); display: none; font-size: 13px; font-weight: 600; gap: 8px; min-height: 42px; padding: 0 14px; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0 0 16px; padding: 0; }
-.chips button { align-items: center; background: var(--c-accent-soft); border: 1px solid #c3d2ef; color: var(--c-accent-ink); display: inline-flex; font-size: 12px; font-weight: 600; gap: 6px; min-height: 30px; padding: 0 10px; transition: background .15s ease; }
-.chips button:hover { background: #d3dff5; }
+.chips button { align-items: center; background: var(--c-accent-soft); border: 1px solid #ffc2df; color: var(--c-accent-ink); display: inline-flex; font-size: 12px; font-weight: 600; gap: 6px; min-height: 30px; padding: 0 10px; transition: background .15s ease; }
+.chips button:hover { background: #ffd1e7; }
 
 .list { display: grid; gap: 14px; }
 .error { background: var(--c-bad-soft); border-left: 3px solid var(--c-bad); color: #6e2e36; font-size: 13px; margin: 0 0 14px; padding: 12px 14px; }

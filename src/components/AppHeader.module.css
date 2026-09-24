@@ -1,4 +1,6 @@
 .header { background: var(--c-deep); color: var(--c-on-dark); position: sticky; top: 0; z-index: 30; }
+/* Радужная полоса Pride по нижнему краю шапки */
+.header::after { background: var(--pride-stripe); bottom: 0; content: ""; height: 3px; left: 0; position: absolute; right: 0; }
 .inner { align-items: center; display: flex; gap: 28px; min-height: 64px; padding: 0 var(--gutter); }
 .brand { align-items: center; display: inline-flex; font-size: 19px; font-weight: 800; gap: 9px; letter-spacing: -.01em; text-transform: lowercase; }
 .brandMark { align-items: center; background: var(--c-accent); color: var(--c-deep); display: inline-flex; height: 28px; justify-content: center; width: 28px; }

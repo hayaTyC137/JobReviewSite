@@ -39,7 +39,7 @@
 .verified {
   align-items: center;
   background: var(--c-accent-soft);
-  border: 1px solid #c3d2ef;
+  border: 1px solid #ffc2df;
   color: var(--c-accent-ink);
   display: inline-flex;
   font-family: var(--font-mono);
