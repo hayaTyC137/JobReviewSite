@@ -4,44 +4,43 @@
 @import '@fontsource/ibm-plex-mono/600.css';
 
 /*
- * Единые токены «Контура» (графит + ярко-розовый акцент в стиле Pride).
- * Радужная полоса под шапкой — var(--pride-stripe). Все страницы берут цвета только отсюда —
- * см. DESIGN.md. Локальные переменные в CSS страниц ссылаются на эти токены.
+ * Единые токены «Контура»: тёплая палитра (кофейная ночь + тёплая бумага) с мягким пастельным
+ * оранжевым акцентом. Все страницы берут цвета только отсюда — см. DESIGN.md.
+ * Локальные переменные в CSS страниц ссылаются на эти токены.
  */
 :root {
   /* Тёмные поверхности: header, hero, score-карточки */
-  --c-deep: #0e1624;
-  --c-darkest: #090f19;
-  --c-dark-surface: #152033;
-  --c-dark-panel: #1f2c42;
-  --c-dark-line: #2b3a52;
-  --c-on-dark: #eef2f8;
-  --c-dark-muted: #a9b4c6;
-  --c-dark-soft: #c7d0de;
+  --c-deep: #1c1612;
+  --c-darkest: #120e0b;
+  --c-dark-surface: #241c17;
+  --c-dark-panel: #30261f;
+  --c-dark-line: #4a3b31;
+  --c-on-dark: #fbf3ea;
+  --c-dark-muted: #c9b6a6;
+  --c-dark-soft: #dccbbd;
 
   /* Светлые поверхности */
-  --c-canvas: #eef1f5;
-  --c-surface: #f9fafc;
+  --c-canvas: #f6efe7;
+  --c-surface: #fcf8f3;
   --c-surface-raised: #ffffff;
-  --c-surface-tint: #e3e8ef;
-  --c-surface-tint-strong: #d9e0ea;
+  --c-surface-tint: #efe4d8;
+  --c-surface-tint-strong: #e8dacb;
 
   /* Текст и линии */
-  --c-ink: #131a26;
-  --c-ink-soft: #33405a;
-  --c-muted: #5a6577;
-  --c-tint-ink: #435064;
-  --c-line: #d6dce5;
-  --c-line-soft: #e2e7ee;
-  --c-line-strong: #8894a7;
+  --c-ink: #2a1f18;
+  --c-ink-soft: #4d3e33;
+  --c-muted: #75655a;
+  --c-tint-ink: #5f4f44;
+  --c-line: #e2d5c7;
+  --c-line-soft: #ece2d6;
+  --c-line-strong: #a8927f;
 
-  /* Акцент — ярко-розовый. --c-accent для заливок и тёмного фона (текст на нём — тёмный),
+  /* Акцент — мягкий пастельный оранжевый. --c-accent для заливок и тёмного фона (текст на нём — тёмный),
      --c-accent-ink для текста и ссылок на светлом фоне: контраст не ниже 4.5:1 */
-  --c-accent: #ff2d95;
-  --c-accent-hover: #ff5cad;
-  --c-accent-ink: #c2006b;
-  --c-accent-soft: #ffe0ef;
-  --pride-stripe: linear-gradient(90deg, #e40303 0 16.66%, #ff8c00 0 33.33%, #ffed00 0 50%, #008026 0 66.66%, #004dff 0 83.33%, #750787 0);
+  --c-accent: #f4a261;
+  --c-accent-hover: #f7b77f;
+  --c-accent-ink: #9c4d18;
+  --c-accent-soft: #fde8d6;
 
   /* Статусы (всегда вместе с иконкой и подписью) */
   --c-good: #3f7a64;
@@ -51,10 +50,11 @@
   --c-bad: #a2505a;
   --c-bad-soft: #f5e3e5;
 
-  /* Графики: проверены валидатором палитры (CVD и контраст на светлом фоне) */
-  --c-chart-1: #d6247f;
-  --c-chart-2: #a8742c;
-  --c-chart-grid: #e4e8ee;
+  /* Графики: оранжевый + приглушённый бирюзовый — пара различима при нарушениях цветовосприятия,
+     обе серии не ниже 3:1 на белом */
+  --c-chart-1: #c8711f;
+  --c-chart-2: #3f7a8c;
+  --c-chart-grid: #ece3d9;
 
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;

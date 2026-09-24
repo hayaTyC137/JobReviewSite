@@ -33,7 +33,7 @@
 .authorButton:hover .authorName { text-decoration: underline; text-decoration-color: var(--c-line-strong); text-underline-offset: 3px; }
 .avatar { align-items: center; background: var(--c-accent-soft); color: var(--c-accent-ink); display: inline-flex; flex: 0 0 auto; font-family: var(--font-mono); font-size: 11px; font-weight: 600; height: 34px; justify-content: center; width: 34px; }
 .authorName { font-size: 14px; font-weight: 650; white-space: nowrap; }
-.popover { background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 16px 40px rgba(9, 15, 25, .16); left: 0; padding: 16px; position: absolute; top: calc(100% + 8px); width: min(340px, calc(100vw - 40px)); z-index: 20; }
+.popover { background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 16px 40px rgba(18, 14, 11, .16); left: 0; padding: 16px; position: absolute; top: calc(100% + 8px); width: min(340px, calc(100vw - 40px)); z-index: 20; }
 .popoverHead { align-items: center; display: flex; gap: 11px; }
 .popoverHead div strong { display: block; font-size: 15px; }
 .popoverHead div span { color: var(--c-muted); display: block; font-size: 12px; margin-top: 2px; }

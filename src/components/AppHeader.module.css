@@ -1,6 +1,4 @@
 .header { background: var(--c-deep); color: var(--c-on-dark); position: sticky; top: 0; z-index: 30; }
-/* Радужная полоса Pride по нижнему краю шапки */
-.header::after { background: var(--pride-stripe); bottom: 0; content: ""; height: 3px; left: 0; position: absolute; right: 0; }
 .inner { align-items: center; display: flex; gap: 28px; min-height: 64px; padding: 0 var(--gutter); }
 .brand { align-items: center; display: inline-flex; font-size: 19px; font-weight: 800; gap: 9px; letter-spacing: -.01em; text-transform: lowercase; }
 .brandMark { align-items: center; background: var(--c-accent); color: var(--c-deep); display: inline-flex; height: 28px; justify-content: center; width: 28px; }
@@ -9,7 +7,7 @@
 .nav a:hover { color: var(--c-on-dark); }
 .nav a.active { border-color: var(--c-accent); color: var(--c-on-dark); }
 .actions { align-items: center; display: flex; gap: 12px; margin-left: auto; min-width: 0; }
-.demo { border: 1px dashed #52627c; color: var(--c-dark-muted); font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; padding: 5px 8px; text-transform: uppercase; white-space: nowrap; }
+.demo { border: 1px dashed #6e5b4d; color: var(--c-dark-muted); font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; padding: 5px 8px; text-transform: uppercase; white-space: nowrap; }
 .login { align-items: center; background: var(--c-accent); border: 0; color: var(--c-deep); display: inline-flex; font-size: 13px; font-weight: 700; gap: 8px; min-height: 40px; padding: 0 16px; transition: background .18s ease, transform .18s ease; }
 .login:hover { background: var(--c-accent-hover); }
 .login:active { transform: translateY(1px); }

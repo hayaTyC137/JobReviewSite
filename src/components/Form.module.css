@@ -14,7 +14,7 @@
   width: 100%;
 }
 .textarea { line-height: 1.5; min-height: 120px; resize: vertical; }
-.input:focus, .textarea:focus, .select:focus { background: var(--c-surface-raised); border-color: var(--c-accent); box-shadow: 0 0 0 3px rgba(255, 45, 149, .22); outline: 0; }
+.input:focus, .textarea:focus, .select:focus { background: var(--c-surface-raised); border-color: var(--c-accent); box-shadow: 0 0 0 3px rgba(244, 162, 97, .22); outline: 0; }
 .input[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--c-bad); }
 .fieldError { color: var(--c-bad); font-size: 12px; }
 .counter { color: var(--c-muted); font-family: var(--font-mono); font-size: 10.5px; justify-self: end; }
@@ -55,7 +55,7 @@
 
 .segmented { background: var(--c-surface-tint); display: inline-flex; gap: 2px; padding: 3px; width: 100%; }
 .segmented button { background: transparent; border: 0; color: var(--c-tint-ink); flex: 1; font-size: 13px; min-height: 38px; padding: 0 12px; transition: background .15s ease, color .15s ease; }
-.segmented button[aria-checked="true"], .segmented button[aria-selected="true"] { background: var(--c-surface-raised); box-shadow: 0 1px 2px rgba(9, 15, 25, .08); color: var(--c-ink); font-weight: 650; }
+.segmented button[aria-checked="true"], .segmented button[aria-selected="true"] { background: var(--c-surface-raised); box-shadow: 0 1px 2px rgba(18, 14, 11, .08); color: var(--c-ink); font-weight: 650; }
 
 .divider { align-items: center; color: var(--c-muted); display: flex; font-family: var(--font-mono); font-size: 10.5px; gap: 12px; text-transform: uppercase; }
 .divider::before, .divider::after { background: var(--c-line); content: ""; flex: 1; height: 1px; }

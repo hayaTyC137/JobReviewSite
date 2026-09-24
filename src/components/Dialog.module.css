@@ -1,5 +1,5 @@
-.backdrop { align-items: flex-start; background: rgba(9, 15, 25, .56); display: flex; inset: 0; justify-content: center; overflow-y: auto; padding: max(48px, 8vh) 16px 32px; position: fixed; z-index: 60; }
-.panel { background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 24px 60px rgba(9, 15, 25, .28); color: var(--c-ink); width: 100%; }
+.backdrop { align-items: flex-start; background: rgba(18, 14, 11, .56); display: flex; inset: 0; justify-content: center; overflow-y: auto; padding: max(48px, 8vh) 16px 32px; position: fixed; z-index: 60; }
+.panel { background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 24px 60px rgba(18, 14, 11, .28); color: var(--c-ink); width: 100%; }
 .head { align-items: flex-start; border-bottom: 1px solid var(--c-line-soft); display: flex; gap: 16px; justify-content: space-between; padding: 22px 24px 18px; }
 .head h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; margin: 0; }
 .subtitle { color: var(--c-muted); font-size: 13px; line-height: 1.45; margin-top: 6px; }
