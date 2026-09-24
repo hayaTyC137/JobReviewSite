@@ -79,7 +79,9 @@ export function SearchPage() {
 
   // Поиск по названию срабатывает после паузы в наборе, чтобы не слать запрос на каждую букву
   useEffect(() => {
-    if (query === urlQuery) return
+    // Строка из одних пробелов в URL не попадает (см. writeParams) — сравниваем с тем, что туда реально запишется,
+    // иначе поле и URL никогда не совпадут и запрос будет повторяться бесконечно
+    if ((query.trim() ? query : '') === urlQuery) return
     const timer = window.setTimeout(() => setSearchParams(writeParams(query, filters), { replace: true }), 280)
     return () => window.clearTimeout(timer)
   }, [query, urlQuery, filters, setSearchParams])
@@ -103,13 +105,15 @@ export function SearchPage() {
   }, [baseParams])
 
   const loadMore = async () => {
+    const id = requestId.current
     setLoadingMore(true)
     try {
       const result = await api.searchCompanies({ ...baseParams, page: page + 1 })
+      if (id !== requestId.current) return // пока грузили, фильтры поменялись — эта страница уже не нужна
       setItems((current) => [...current, ...result.items.filter((c) => !current.some((x) => x.id === c.id))])
       setPage(result.page)
     } catch {
-      setError('Не удалось загрузить следующую страницу.')
+      if (id === requestId.current) setError('Не удалось загрузить следующую страницу.')
     } finally {
       setLoadingMore(false)
     }

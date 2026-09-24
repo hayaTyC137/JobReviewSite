@@ -59,3 +59,5 @@
 @media (max-width: 520px) {
   .pairRow { grid-template-columns: 88px 1fr; }
 }
+
+.noData { color: var(--c-muted); font-size: 13px; margin: 0; padding: 32px 0; text-align: center; }

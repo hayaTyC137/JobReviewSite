@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import { api } from '../api/client'
+import { ApiError } from '../api/errors'
 import type { User } from '../api/types'
 import { AuthContext } from './authContext'
 import type { AuthContextValue } from './authContext'
@@ -31,7 +32,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     let cancelled = false
     api.me(token)
       .then((me) => { if (!cancelled) setUser(me) })
-      .catch(() => { if (!cancelled) { writeToken(null); setToken(null) } })
+      .catch((error) => {
+        // Забываем токен, только если сервер его отверг. При сбое сети токен остаётся —
+        // после перезагрузки страницы вход восстановится сам
+        if (!cancelled && error instanceof ApiError && error.status < 500) { writeToken(null); setToken(null) }
+      })
       .finally(() => { if (!cancelled) setReady(true) })
     return () => { cancelled = true }
   }, [token, user])

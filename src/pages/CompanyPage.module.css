@@ -111,3 +111,5 @@
 @media (prefers-reduced-motion: reduce) {
   .loading span { animation: none; }
 }
+
+.error { background: var(--c-bad-soft); border-left: 3px solid var(--c-bad); color: #6e2e36; font-size: 13px; margin: 16px 0 0; padding: 12px 14px; }

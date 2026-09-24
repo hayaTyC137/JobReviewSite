@@ -47,6 +47,11 @@ export function TrendChart({ points, asTable }: Props) {
     )
   }
 
+  // Без точек не из чего строить оси и тултип (индекс наведения ушёл бы в -1)
+  if (points.length === 0) {
+    return <p className={styles.noData}>Отзывов пока нет — график появится после первых оценок.</p>
+  }
+
   const innerW = W - PAD.left - PAD.right
   const innerH = H - PAD.top - PAD.bottom
   const x = (i: number) => PAD.left + (points.length === 1 ? innerW / 2 : (i / (points.length - 1)) * innerW)

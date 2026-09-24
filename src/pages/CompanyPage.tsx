@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { motion, useReducedMotion } from 'motion/react'
 import {
@@ -22,6 +22,11 @@ import styles from './CompanyPage.module.css'
 
 const REVIEWS_PAGE = 6
 
+/** Сайт может храниться и как «nova.studio», и как «https://nova.studio» */
+function websiteUrl(website: string): string {
+  return /^https?:\/\//i.test(website) ? website : `https://${website}`
+}
+
 type LoadState = 'loading' | 'ready' | 'not-found' | 'error'
 
 export function CompanyPage() {
@@ -41,15 +46,20 @@ export function CompanyPage() {
   const [writeOpen, setWriteOpen] = useState(false)
   const [appealTarget, setAppealTarget] = useState<Review | null>(null)
   const [notice, setNotice] = useState('')
+  const [reviewsError, setReviewsError] = useState('')
+  // Компания, которая сейчас на экране: ответ по предыдущей (после перехода по ссылке) выбрасываем
+  const activeSlug = useRef(slug)
 
   const loadCompany = useCallback(async () => {
     const [details, stats] = await Promise.all([api.getCompany(slug), api.getAnalytics(slug)])
+    if (activeSlug.current !== slug) return
     setCompany(details)
     setAnalytics(stats)
   }, [slug])
 
   const loadReviews = useCallback(async () => {
     const page = await api.getReviews(slug, 0, REVIEWS_PAGE)
+    if (activeSlug.current !== slug) return
     setReviews(page.items)
     setReviewsTotal(page.totalItems)
     setReviewsPages(page.totalPages)
@@ -58,13 +68,15 @@ export function CompanyPage() {
 
   useEffect(() => {
     let cancelled = false
+    activeSlug.current = slug
     setState('loading')
+    setReviewsError('')
     Promise.all([loadCompany(), loadReviews()])
       .then(() => { if (!cancelled) setState('ready') })
       .catch((err) => { if (!cancelled) setState(err instanceof ApiError && err.status === 404 ? 'not-found' : 'error') })
     window.scrollTo({ top: 0 })
     return () => { cancelled = true }
-  }, [loadCompany, loadReviews])
+  }, [slug, loadCompany, loadReviews])
 
   useEffect(() => {
     if (company) document.title = `${company.name} — отзывы сотрудников · Контур`
@@ -79,10 +91,14 @@ export function CompanyPage() {
 
   const loadMoreReviews = async () => {
     setLoadingMore(true)
+    setReviewsError('')
     try {
       const page = await api.getReviews(slug, reviewsPage + 1, REVIEWS_PAGE)
+      if (activeSlug.current !== slug) return
       setReviews((current) => [...current, ...page.items.filter((r) => !current.some((x) => x.id === r.id))])
       setReviewsPage(page.page)
+    } catch {
+      if (activeSlug.current === slug) setReviewsError('Не удалось загрузить следующие отзывы. Попробуйте ещё раз.')
     } finally {
       setLoadingMore(false)
     }
@@ -136,7 +152,7 @@ export function CompanyPage() {
     { icon: MapPin, label: 'Фактический адрес', value: company.actualAddress },
     { icon: Phone, label: 'Телефон', value: company.phone, href: company.phone ? `tel:${company.phone.replace(/[^+\d]/g, '')}` : undefined },
     { icon: Mail, label: 'Email', value: company.email, href: company.email ? `mailto:${company.email}` : undefined },
-    { icon: Globe, label: 'Сайт', value: company.website, href: company.website ? `https://${company.website}` : undefined },
+    { icon: Globe, label: 'Сайт', value: company.website, href: company.website ? websiteUrl(company.website) : undefined },
     { icon: UsersRound, label: 'Сотрудников', value: company.employeesCount ? company.employeesCount.toLocaleString('ru-RU') : null },
     { icon: CalendarClock, label: 'На рынке с', value: company.foundedYear ? `${company.foundedYear} года` : null },
   ]
@@ -282,6 +298,8 @@ export function CompanyPage() {
               ))}
             </div>
           )}
+
+          {reviewsError && <p className={styles.error} role="alert">{reviewsError}</p>}
 
           {reviewsPage + 1 < reviewsPages && (
             <button className={styles.more} type="button" onClick={loadMoreReviews} disabled={loadingMore}>
