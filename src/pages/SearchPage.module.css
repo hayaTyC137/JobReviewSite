@@ -3,7 +3,7 @@
 /* ---------- Hero с поиском ---------- */
 .hero { background: var(--c-deep); color: var(--c-on-dark); overflow: hidden; position: relative; }
 .hero::after { background: linear-gradient(90deg, transparent, var(--c-dark-line) 20%, var(--c-dark-line) 80%, transparent); bottom: 0; content: ""; height: 1px; left: 0; position: absolute; right: 0; }
-.heroInner { margin: 0 auto; max-width: calc(1280px + 2 * 28px); padding: 56px var(--gutter) 48px; }
+.heroInner { padding: 56px var(--gutter) 48px; }
 .kicker { color: var(--c-accent-hover); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; margin: 0; text-transform: uppercase; }
 .hero h1 { font-size: clamp(34px, 5.2vw, 56px); font-weight: 750; letter-spacing: -.03em; line-height: 1.02; margin: 14px 0 28px; max-width: 14em; }
 .hero h1 span { color: var(--c-dark-muted); display: block; font-weight: 500; }
@@ -15,7 +15,7 @@
 .searchField button:hover { background: var(--c-surface-tint); color: var(--c-ink); }
 
 /* ---------- Сетка: фильтры + результаты ---------- */
-.layout { align-items: start; display: grid; gap: 36px; grid-template-columns: 290px minmax(0, 1fr); margin: 0 auto; max-width: calc(1280px + 2 * 28px); padding: 36px var(--gutter) 96px; }
+.layout { align-items: start; display: grid; gap: 36px; grid-template-columns: 290px minmax(0, 1fr); padding: 36px var(--gutter) 96px; }
 .sidebar { position: sticky; top: 88px; max-height: calc(100vh - 108px); overflow-y: auto; padding-right: 6px; }
 .sidebarHead, .applyMobile { display: none; }
 

@@ -1,5 +1,5 @@
 .page { background: var(--c-canvas); min-height: 100vh; }
-.content { margin: 0 auto; max-width: calc(1280px + 2 * 28px); padding: 24px var(--gutter) 110px; }
+.content { padding: 24px var(--gutter) 110px; }
 
 .back { align-items: center; color: var(--c-muted); display: inline-flex; font-size: 13px; gap: 7px; min-height: 40px; transition: color .15s ease, gap .2s ease; }
 .back:hover { color: var(--c-ink); gap: 10px; }
@@ -76,7 +76,7 @@
 .toast svg { color: var(--c-accent-hover); flex: 0 0 auto; }
 
 /* ---------- Состояния ---------- */
-.loading { display: grid; gap: 14px; margin: 0 auto; max-width: calc(1280px + 2 * 28px); padding: 60px var(--gutter); }
+.loading { display: grid; gap: 14px; padding: 60px var(--gutter); }
 .loading span { animation: pulse 1.3s ease-in-out infinite; background: var(--c-surface-tint); display: block; height: 24px; }
 .loading span:first-child { height: 64px; width: 50%; }
 .loading span:nth-child(3) { height: 220px; }

@@ -58,7 +58,11 @@
   --font-kinetic: "Inter Variable", "Inter", "Arial Black", sans-serif;
 
   --radius: 2px;
-  --gutter: max(28px, calc((100vw - 1280px) / 2));
+  /* Ширина рабочей области внутренних страниц (шапка, каталог, профиль компании).
+     --gutter — боковой отступ во всю ширину экрана: контент ровно --page-max, но не ближе 28px к краю.
+     Контейнеру с таким отступом max-width не нужен, иначе отступ посчитается дважды */
+  --page-max: 1600px;
+  --gutter: max(28px, calc((100vw - var(--page-max)) / 2));
   --ease-out: cubic-bezier(.16, 1, .3, 1);
 
   font-family: var(--font-sans);

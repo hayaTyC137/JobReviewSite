@@ -48,7 +48,8 @@
 .skeleton .scoreColumn span { height: 52px; width: 80px; }
 @keyframes shimmer { 50% { opacity: .45; } }
 
-@media (max-width: 980px) {
+/* Три колонки нужны ~900px ширины списка; уже — критерии уходят во второй ряд, иначе подписи обрезаются */
+@media (max-width: 1180px) {
   .card { grid-template-areas: "main score" "criteria criteria" "latest latest"; grid-template-columns: minmax(0, 1fr) auto; }
 }
 
