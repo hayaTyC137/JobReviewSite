@@ -1,0 +1,2485 @@
+{
+  "users": [
+    {
+      "key": "u-anna",
+      "email": "anna.k@demo.ru",
+      "displayName": "Анна К.",
+      "jobTitle": "Product Designer",
+      "city": "Москва",
+      "createdAt": "2024-02-11"
+    },
+    {
+      "key": "u-mikhail",
+      "email": "mikhail.v@demo.ru",
+      "displayName": "Михаил В.",
+      "jobTitle": "Аналитик данных",
+      "city": "Москва",
+      "createdAt": "2024-09-03"
+    },
+    {
+      "key": "u-daria",
+      "email": "daria.r@demo.ru",
+      "displayName": "Дарья Р.",
+      "jobTitle": "Frontend Engineer",
+      "city": "Санкт-Петербург",
+      "createdAt": "2025-01-20"
+    },
+    {
+      "key": "u-lev",
+      "email": "lev.s@demo.ru",
+      "displayName": "Лев С.",
+      "jobTitle": "Исследователь",
+      "city": "Санкт-Петербург",
+      "createdAt": "2025-04-02"
+    },
+    {
+      "key": "u-roman",
+      "email": "roman.k@demo.ru",
+      "displayName": "Роман К.",
+      "jobTitle": "Backend Engineer",
+      "city": "Казань",
+      "createdAt": "2023-11-15"
+    },
+    {
+      "key": "u-ilya",
+      "email": "ilya.n@demo.ru",
+      "displayName": "Илья Н.",
+      "jobTitle": "Арт-директор",
+      "city": "Казань",
+      "createdAt": "2025-06-18"
+    },
+    {
+      "key": "u-alina",
+      "email": "alina.s@demo.ru",
+      "displayName": "Алина С.",
+      "jobTitle": "Менеджер проектов",
+      "city": "Минск",
+      "createdAt": "2024-05-27"
+    },
+    {
+      "key": "u-timur",
+      "email": "timur.a@demo.ru",
+      "displayName": "Тимур А.",
+      "jobTitle": "QA Engineer",
+      "city": "Алматы",
+      "createdAt": "2025-08-09"
+    },
+    {
+      "key": "u-olga",
+      "email": "olga.m@demo.ru",
+      "displayName": "Ольга М.",
+      "jobTitle": "HR-специалист",
+      "city": "Екатеринбург",
+      "createdAt": "2024-12-01"
+    },
+    {
+      "key": "u-pavel",
+      "email": "pavel.d@demo.ru",
+      "displayName": "Павел Д.",
+      "jobTitle": "Логист",
+      "city": "Екатеринбург",
+      "createdAt": "2025-10-14"
+    },
+    {
+      "key": "u-ksenia",
+      "email": "ksenia.b@demo.ru",
+      "displayName": "Ксения Б.",
+      "jobTitle": "Консультант",
+      "city": "Москва",
+      "createdAt": "2025-03-08"
+    },
+    {
+      "key": "u-egor",
+      "email": "egor.p@demo.ru",
+      "displayName": "Егор П.",
+      "jobTitle": "DevOps Engineer",
+      "city": "Новосибирск",
+      "createdAt": "2024-07-22"
+    },
+    {
+      "key": "u-vera",
+      "email": "vera.l@demo.ru",
+      "displayName": "Вера Л.",
+      "jobTitle": "Специалист поддержки",
+      "city": "Новосибирск",
+      "createdAt": "2026-01-30"
+    },
+    {
+      "key": "u-nikita",
+      "email": "nikita.g@demo.ru",
+      "displayName": "Никита Г.",
+      "jobTitle": "Продакт-менеджер",
+      "city": "Минск",
+      "createdAt": "2025-11-05"
+    },
+    {
+      "key": "ceo-nova",
+      "email": "ceo@nova.demo",
+      "displayName": "Ирина Лебедева",
+      "jobTitle": "Генеральный директор",
+      "city": "Москва",
+      "createdAt": "2023-06-01",
+      "role": "REPRESENTATIVE",
+      "company": "nova-studio"
+    },
+    {
+      "key": "moderator",
+      "email": "moderator@demo.ru",
+      "displayName": "Модератор Контура",
+      "jobTitle": "Модератор",
+      "city": "Москва",
+      "createdAt": "2023-01-10",
+      "role": "MODERATOR"
+    }
+  ],
+  "companies": [
+    {
+      "slug": "nova-studio",
+      "name": "NOVA Studio",
+      "legalName": "ООО «Нова Диджитал»",
+      "inn": "7707123456",
+      "country": "Россия",
+      "city": "Москва",
+      "legalAddress": "125009, г. Москва, ул. Большая Дмитровка, д. 12, стр. 3",
+      "actualAddress": "г. Москва, ул. Большая Дмитровка, 12, стр. 3, 4 этаж",
+      "phone": "+7 495 120-44-10",
+      "email": "hello@nova.studio",
+      "website": "nova.studio",
+      "industry": "Дизайн и цифровые продукты",
+      "employeesCount": 240,
+      "foundedYear": 2014,
+      "description": "Студия цифровых продуктов: проектирует и разрабатывает сервисы для банков, ритейла и медиа. Кросс-функциональные команды по 6–9 человек."
+    },
+    {
+      "slug": "orbita-labs",
+      "name": "ORBITA Labs",
+      "legalName": "ООО «Орбита Лабс»",
+      "inn": "7813654321",
+      "country": "Россия",
+      "city": "Санкт-Петербург",
+      "legalAddress": "197101, г. Санкт-Петербург, Кронверкский пр., д. 23",
+      "actualAddress": "г. Санкт-Петербург, Кронверкский пр., 23, офис 305",
+      "phone": "+7 812 407-18-22",
+      "email": "team@orbita-labs.ru",
+      "website": "orbita-labs.ru",
+      "industry": "Исследования и технологии",
+      "employeesCount": 96,
+      "foundedYear": 2018,
+      "description": "R&D-лаборатория в области компьютерного зрения и робототехники. Работает с промышленными заказчиками и университетами."
+    },
+    {
+      "slug": "mosaic-studio",
+      "name": "MOSAIC Studio",
+      "legalName": "ООО «Мозаик Креатив»",
+      "inn": "1655987612",
+      "country": "Россия",
+      "city": "Казань",
+      "legalAddress": "420111, г. Казань, ул. Пушкина, д. 30",
+      "actualAddress": "г. Казань, ул. Пушкина, 30, бизнес-центр «Сувар»",
+      "phone": "+7 843 211-90-05",
+      "email": "job@mosaic.studio",
+      "website": "mosaic.studio",
+      "industry": "Продуктовый дизайн",
+      "employeesCount": 74,
+      "foundedYear": 2017,
+      "description": "Независимая студия продуктового дизайна. Делает интерфейсы для финтеха и образования, ведёт открытые воркшопы."
+    },
+    {
+      "slug": "northline-digital",
+      "name": "Northline Digital",
+      "legalName": "ООО «Нортлайн Диджитал»",
+      "inn": "192837465",
+      "country": "Беларусь",
+      "city": "Минск",
+      "legalAddress": "220030, г. Минск, ул. Немига, д. 5",
+      "actualAddress": "г. Минск, ул. Немига, 5, 7 этаж",
+      "phone": "+375 17 388-21-40",
+      "email": "careers@northline.by",
+      "website": "northline.by",
+      "industry": "Аутсорсинг разработки",
+      "employeesCount": 410,
+      "foundedYear": 2011,
+      "description": "Аутсорсинговая компания: мобильная и веб-разработка для европейских клиентов. Много проектов с плотным графиком релизов."
+    },
+    {
+      "slug": "radius-systems",
+      "name": "RADIUS Systems",
+      "legalName": "АО «Радиус Системс»",
+      "inn": "5406777123",
+      "country": "Россия",
+      "city": "Новосибирск",
+      "legalAddress": "630099, г. Новосибирск, ул. Ленина, д. 21",
+      "actualAddress": "г. Новосибирск, Академгородок, ул. Инженерная, 4",
+      "phone": "+7 383 355-12-70",
+      "email": "hr@radius-sys.ru",
+      "website": "radius-sys.ru",
+      "industry": "Инфраструктурное ПО",
+      "employeesCount": 560,
+      "foundedYear": 2006,
+      "description": "Разработчик систем мониторинга и хранения данных для телеком-операторов. Крупная инженерная школа, строгие процессы."
+    },
+    {
+      "slug": "kedr-logistic",
+      "name": "Кедр Логистик",
+      "legalName": "ООО «Кедр Логистик»",
+      "inn": "6671234987",
+      "country": "Россия",
+      "city": "Екатеринбург",
+      "legalAddress": "620014, г. Екатеринбург, ул. Малышева, д. 51",
+      "actualAddress": "г. Екатеринбург, ул. Складская, 8 (распределительный центр)",
+      "phone": "+7 343 310-77-01",
+      "email": "personal@kedr-log.ru",
+      "website": "kedr-log.ru",
+      "industry": "Логистика и склад",
+      "employeesCount": 1250,
+      "foundedYear": 2009,
+      "description": "Региональный логистический оператор: складское хранение, доставка по Уралу и Сибири, собственный автопарк."
+    },
+    {
+      "slug": "altyn-pay",
+      "name": "Altyn Pay",
+      "legalName": "ТОО «Алтын Пэй»",
+      "inn": "180540012345",
+      "country": "Казахстан",
+      "city": "Алматы",
+      "legalAddress": "050000, г. Алматы, пр. Аль-Фараби, д. 77/7",
+      "actualAddress": "г. Алматы, пр. Аль-Фараби, 77/7, БЦ «Esentai Tower»",
+      "phone": "+7 727 339-45-00",
+      "email": "talent@altynpay.kz",
+      "website": "altynpay.kz",
+      "industry": "Финтех",
+      "employeesCount": 320,
+      "foundedYear": 2019,
+      "description": "Платёжный сервис для малого бизнеса: эквайринг, кассы и аналитика продаж. Быстро растёт, открывает офис в Астане."
+    },
+    {
+      "slug": "meridian-consulting",
+      "name": "Меридиан Консалтинг",
+      "legalName": "ООО «Меридиан Консалтинг Групп»",
+      "inn": "7710456789",
+      "country": "Россия",
+      "city": "Москва",
+      "legalAddress": "123112, г. Москва, Пресненская наб., д. 10, стр. 2",
+      "actualAddress": "г. Москва, Пресненская наб., 10, Москва-Сити, башня «Империя»",
+      "phone": "+7 495 660-30-30",
+      "email": "career@meridian-cg.ru",
+      "website": "meridian-cg.ru",
+      "industry": "Управленческий консалтинг",
+      "employeesCount": 180,
+      "foundedYear": 2012,
+      "description": "Консалтинг в области стратегии и операционной эффективности. Проекты для промышленности и ритейла, частые командировки."
+    }
+  ],
+  "reviews": [
+    {
+      "company": "nova-studio",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "Менеджер проектов",
+      "overall": 5,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2026-09-17"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-mikhail",
+      "employmentStatus": "CURRENT",
+      "position": "UX-исследователь",
+      "overall": 5,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 5,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2026-08-07"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-roman",
+      "employmentStatus": "CURRENT",
+      "position": "Аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 5,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 5
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-07-31"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-alina",
+      "employmentStatus": "FORMER",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2026-07-07"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "Product Designer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-06-20"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-mikhail",
+      "employmentStatus": "CURRENT",
+      "position": "Аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 5,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-05-25"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-pavel",
+      "employmentStatus": "CURRENT",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-05-19"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-ksenia",
+      "employmentStatus": "FORMER",
+      "position": "UX-исследователь",
+      "overall": 5,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2026-04-27"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-alina",
+      "employmentStatus": "CURRENT",
+      "position": "Аналитик",
+      "overall": 5,
+      "scores": {
+        "climate": 5,
+        "management": 5,
+        "team": 4,
+        "office": 4,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2026-04-05"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-daria",
+      "employmentStatus": "FORMER",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 3,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-02-26"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-vera",
+      "employmentStatus": "FORMER",
+      "position": "Аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-02-23"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-pavel",
+      "employmentStatus": "CURRENT",
+      "position": "Frontend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-01-18"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-egor",
+      "employmentStatus": "FORMER",
+      "position": "UX-исследователь",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-12-27"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-roman",
+      "employmentStatus": "FORMER",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2025-12-05"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-nikita",
+      "employmentStatus": "CURRENT",
+      "position": "Аналитик",
+      "overall": 5,
+      "scores": {
+        "climate": 4,
+        "management": 5,
+        "team": 4,
+        "office": 5,
+        "clients": 3,
+        "growth": 5
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2025-11-30"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-olga",
+      "employmentStatus": "CURRENT",
+      "position": "UX-исследователь",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2025-10-26"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "UX-исследователь",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 5,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2025-10-07"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "UX-исследователь",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2025-10-06"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-egor",
+      "employmentStatus": "CURRENT",
+      "position": "Frontend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2025-09-07"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-ilya",
+      "employmentStatus": "CURRENT",
+      "position": "Frontend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 5,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-08-12"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-anna",
+      "employmentStatus": "CURRENT",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 5,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-07-20"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2025-07-12"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-mikhail",
+      "employmentStatus": "FORMER",
+      "position": "C++ разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2026-08-29"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-olga",
+      "employmentStatus": "CURRENT",
+      "position": "ML Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2026-08-09"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-nikita",
+      "employmentStatus": "FORMER",
+      "position": "C++ разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2026-07-15"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-vera",
+      "employmentStatus": "FORMER",
+      "position": "ML Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 5,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-06-22"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-daria",
+      "employmentStatus": "FORMER",
+      "position": "ML Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-05-25"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-pavel",
+      "employmentStatus": "CURRENT",
+      "position": "Инженер-робототехник",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-04-12"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-nikita",
+      "employmentStatus": "FORMER",
+      "position": "Инженер-робототехник",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-03-15"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "C++ разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2026-02-19"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-roman",
+      "employmentStatus": "CURRENT",
+      "position": "Инженер-робототехник",
+      "overall": 3,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Команда сильная, а вот процесс согласований между отделами иногда занимает больше времени, чем сама задача.",
+      "createdAt": "2026-01-24"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-alina",
+      "employmentStatus": "FORMER",
+      "position": "ML Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 3,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-01-05"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-nikita",
+      "employmentStatus": "CURRENT",
+      "position": "C++ разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-12-04"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "Инженер-робототехник",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2025-10-24"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-mikhail",
+      "employmentStatus": "CURRENT",
+      "position": "C++ разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-10-08"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "C++ разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2025-09-15"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-alina",
+      "employmentStatus": "CURRENT",
+      "position": "Исследователь",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2025-08-12"
+    },
+    {
+      "company": "orbita-labs",
+      "author": "u-daria",
+      "employmentStatus": "FORMER",
+      "position": "Инженер-робототехник",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-07-06"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Дизайнер интерфейсов",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-08-28"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "Дизайн-менеджер",
+      "overall": 5,
+      "scores": {
+        "climate": 4,
+        "management": 5,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2026-08-10"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-roman",
+      "employmentStatus": "FORMER",
+      "position": "Арт-директор",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 5,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-07-07"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-lev",
+      "employmentStatus": "FORMER",
+      "position": "Иллюстратор",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 5,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2026-05-18"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "Иллюстратор",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-04-30"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-roman",
+      "employmentStatus": "FORMER",
+      "position": "Дизайн-менеджер",
+      "overall": 5,
+      "scores": {
+        "climate": 4,
+        "management": 5,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2026-03-30"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Арт-директор",
+      "overall": 5,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2026-02-12"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-ksenia",
+      "employmentStatus": "FORMER",
+      "position": "Дизайн-менеджер",
+      "overall": 5,
+      "scores": {
+        "climate": 5,
+        "management": 5,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2026-01-05"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-alina",
+      "employmentStatus": "FORMER",
+      "position": "Иллюстратор",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2025-12-17"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-nikita",
+      "employmentStatus": "FORMER",
+      "position": "Арт-директор",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 5,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-10-31"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "Дизайн-менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 5,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-10-03"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-vera",
+      "employmentStatus": "FORMER",
+      "position": "Дизайн-менеджер",
+      "overall": 5,
+      "scores": {
+        "climate": 5,
+        "management": 5,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2025-08-28"
+    },
+    {
+      "company": "mosaic-studio",
+      "author": "u-alina",
+      "employmentStatus": "FORMER",
+      "position": "Дизайнер интерфейсов",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-07-25"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-anna",
+      "employmentStatus": "CURRENT",
+      "position": "Проектный менеджер",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Зарплата в рынке, но пересмотр только раз в год и по жёсткой сетке. Стоит обсуждать ожидания заранее.",
+      "createdAt": "2026-08-30"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-pavel",
+      "employmentStatus": "FORMER",
+      "position": "Проектный менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-08-05"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-nikita",
+      "employmentStatus": "CURRENT",
+      "position": "Android-разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 2,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-07-25"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-ksenia",
+      "employmentStatus": "FORMER",
+      "position": "Проектный менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-06-14"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Android-разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 2,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2026-06-05"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Java-разработчик",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Хороший старт для карьеры, много практики. Для сеньоров потолок наступает довольно быстро.",
+      "createdAt": "2026-05-04"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-ksenia",
+      "employmentStatus": "CURRENT",
+      "position": "QA Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-04-15"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-ilya",
+      "employmentStatus": "FORMER",
+      "position": "QA Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2026-03-22"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-vera",
+      "employmentStatus": "FORMER",
+      "position": "Проектный менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-02-28"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-olga",
+      "employmentStatus": "FORMER",
+      "position": "QA Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 3,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2026-01-18"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-ilya",
+      "employmentStatus": "FORMER",
+      "position": "Android-разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2025-12-31"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-daria",
+      "employmentStatus": "CURRENT",
+      "position": "Проектный менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2025-12-05"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-lev",
+      "employmentStatus": "CURRENT",
+      "position": "Проектный менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-11-03"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-alina",
+      "employmentStatus": "FORMER",
+      "position": "QA Engineer",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Хороший старт для карьеры, много практики. Для сеньоров потолок наступает довольно быстро.",
+      "createdAt": "2025-10-30"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-pavel",
+      "employmentStatus": "CURRENT",
+      "position": "QA Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2025-09-20"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-pavel",
+      "employmentStatus": "FORMER",
+      "position": "QA Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-09-01"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-vera",
+      "employmentStatus": "CURRENT",
+      "position": "Android-разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2025-07-31"
+    },
+    {
+      "company": "northline-digital",
+      "author": "u-mikhail",
+      "employmentStatus": "CURRENT",
+      "position": "Java-разработчик",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2025-07-18"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-pavel",
+      "employmentStatus": "CURRENT",
+      "position": "Системный аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-09-04"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-daria",
+      "employmentStatus": "CURRENT",
+      "position": "DevOps Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 5,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-08-16"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-daria",
+      "employmentStatus": "CURRENT",
+      "position": "Системный аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 2,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2026-07-27"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-anna",
+      "employmentStatus": "CURRENT",
+      "position": "Backend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-07-03"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-ilya",
+      "employmentStatus": "CURRENT",
+      "position": "Backend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-06-01"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-egor",
+      "employmentStatus": "CURRENT",
+      "position": "Backend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 3,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-05-03"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-ilya",
+      "employmentStatus": "FORMER",
+      "position": "Инженер поддержки",
+      "overall": 3,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Про процессы роста лучше спрашивать ещё на собеседовании — формальной карьерной лестницы пока нет.",
+      "createdAt": "2026-04-11"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "DevOps Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 5,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2026-03-11"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-ksenia",
+      "employmentStatus": "FORMER",
+      "position": "Инженер поддержки",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2026-02-06"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-ilya",
+      "employmentStatus": "FORMER",
+      "position": "Инженер поддержки",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Зарплата в рынке, но пересмотр только раз в год и по жёсткой сетке. Стоит обсуждать ожидания заранее.",
+      "createdAt": "2026-01-16"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Системный аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2025-12-06"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-lev",
+      "employmentStatus": "FORMER",
+      "position": "Системный аналитик",
+      "overall": 3,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Офис неплохой, но в опенспейсе шумно. Удалёнка согласуется индивидуально.",
+      "createdAt": "2025-11-09"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-olga",
+      "employmentStatus": "CURRENT",
+      "position": "Системный аналитик",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 5,
+        "office": 3,
+        "clients": 3,
+        "growth": 5
+      },
+      "text": "В целом хорошее место, но приоритеты меняются быстрее, чем успевают обновляться планы.",
+      "createdAt": "2025-10-15"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-vera",
+      "employmentStatus": "FORMER",
+      "position": "Инженер поддержки",
+      "overall": 3,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Зарплата в рынке, но пересмотр только раз в год и по жёсткой сетке. Стоит обсуждать ожидания заранее.",
+      "createdAt": "2025-09-21"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-olga",
+      "employmentStatus": "CURRENT",
+      "position": "Backend Engineer",
+      "overall": 3,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Команда сильная, а вот процесс согласований между отделами иногда занимает больше времени, чем сама задача.",
+      "createdAt": "2025-08-27"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-nikita",
+      "employmentStatus": "CURRENT",
+      "position": "DevOps Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-08-16"
+    },
+    {
+      "company": "radius-systems",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "Системный аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2025-07-13"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-vera",
+      "employmentStatus": "CURRENT",
+      "position": "Водитель-экспедитор",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 2,
+        "team": 3,
+        "office": 3,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Про процессы роста лучше спрашивать ещё на собеседовании — формальной карьерной лестницы пока нет.",
+      "createdAt": "2026-09-03"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-vera",
+      "employmentStatus": "CURRENT",
+      "position": "Диспетчер",
+      "overall": 3,
+      "scores": {
+        "climate": 4,
+        "management": 2,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 2
+      },
+      "text": "Команда сильная, а вот процесс согласований между отделами иногда занимает больше времени, чем сама задача.",
+      "createdAt": "2026-08-11"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-daria",
+      "employmentStatus": "FORMER",
+      "position": "Начальник смены",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 3,
+        "office": 3,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Офис неплохой, но в опенспейсе шумно. Удалёнка согласуется индивидуально.",
+      "createdAt": "2026-07-07"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "Начальник смены",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 2,
+        "team": 4,
+        "office": 2,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Хороший старт для карьеры, много практики. Для сеньоров потолок наступает довольно быстро.",
+      "createdAt": "2026-06-07"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-vera",
+      "employmentStatus": "FORMER",
+      "position": "Диспетчер",
+      "overall": 3,
+      "scores": {
+        "climate": 4,
+        "management": 2,
+        "team": 4,
+        "office": 3,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Зарплата в рынке, но пересмотр только раз в год и по жёсткой сетке. Стоит обсуждать ожидания заранее.",
+      "createdAt": "2026-05-18"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-lev",
+      "employmentStatus": "FORMER",
+      "position": "Водитель-экспедитор",
+      "overall": 3,
+      "scores": {
+        "climate": 2,
+        "management": 2,
+        "team": 3,
+        "office": 4,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Зарплата в рынке, но пересмотр только раз в год и по жёсткой сетке. Стоит обсуждать ожидания заранее.",
+      "createdAt": "2026-04-19"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-pavel",
+      "employmentStatus": "FORMER",
+      "position": "Водитель-экспедитор",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 2,
+        "team": 3,
+        "office": 4,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Офис неплохой, но в опенспейсе шумно. Удалёнка согласуется индивидуально.",
+      "createdAt": "2026-03-14"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-alina",
+      "employmentStatus": "FORMER",
+      "position": "Начальник смены",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 2
+      },
+      "text": "Про процессы роста лучше спрашивать ещё на собеседовании — формальной карьерной лестницы пока нет.",
+      "createdAt": "2026-02-22"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-roman",
+      "employmentStatus": "CURRENT",
+      "position": "Начальник смены",
+      "overall": 3,
+      "scores": {
+        "climate": 2,
+        "management": 3,
+        "team": 3,
+        "office": 3,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Хороший старт для карьеры, много практики. Для сеньоров потолок наступает довольно быстро.",
+      "createdAt": "2025-12-31"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-ilya",
+      "employmentStatus": "FORMER",
+      "position": "Начальник смены",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 2,
+        "team": 3,
+        "office": 3,
+        "clients": 4,
+        "growth": 3
+      },
+      "text": "Офис неплохой, но в опенспейсе шумно. Удалёнка согласуется индивидуально.",
+      "createdAt": "2025-12-07"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-vera",
+      "employmentStatus": "FORMER",
+      "position": "Логист",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 2
+      },
+      "text": "Офис неплохой, но в опенспейсе шумно. Удалёнка согласуется индивидуально.",
+      "createdAt": "2025-11-11"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-alina",
+      "employmentStatus": "CURRENT",
+      "position": "Логист",
+      "overall": 3,
+      "scores": {
+        "climate": 2,
+        "management": 2,
+        "team": 4,
+        "office": 3,
+        "clients": 3,
+        "growth": 2
+      },
+      "text": "С клиентами бывает непросто: сроки сжатые, требования меняются. Зато руководитель проекта всегда прикрывает команду.",
+      "createdAt": "2025-10-07"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-ksenia",
+      "employmentStatus": "CURRENT",
+      "position": "Логист",
+      "overall": 3,
+      "scores": {
+        "climate": 2,
+        "management": 3,
+        "team": 4,
+        "office": 2,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Зарплата в рынке, но пересмотр только раз в год и по жёсткой сетке. Стоит обсуждать ожидания заранее.",
+      "createdAt": "2025-09-02"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-timur",
+      "employmentStatus": "FORMER",
+      "position": "Водитель-экспедитор",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 3,
+        "office": 4,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Про процессы роста лучше спрашивать ещё на собеседовании — формальной карьерной лестницы пока нет.",
+      "createdAt": "2025-08-18"
+    },
+    {
+      "company": "kedr-logistic",
+      "author": "u-ksenia",
+      "employmentStatus": "CURRENT",
+      "position": "Диспетчер",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 2,
+        "team": 3,
+        "office": 2,
+        "clients": 3,
+        "growth": 3
+      },
+      "text": "Команда сильная, а вот процесс согласований между отделами иногда занимает больше времени, чем сама задача.",
+      "createdAt": "2025-07-05"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-nikita",
+      "employmentStatus": "FORMER",
+      "position": "Аналитик рисков",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 5,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-09-02"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-vera",
+      "employmentStatus": "CURRENT",
+      "position": "Backend Engineer",
+      "overall": 5,
+      "scores": {
+        "climate": 5,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Очень внимательное отношение к онбордингу: первые две недели был бадди, все доступы выдали в первый день.",
+      "createdAt": "2026-07-28"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-mikhail",
+      "employmentStatus": "FORMER",
+      "position": "Продакт-менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 5,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-07-06"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "Продакт-менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2026-06-06"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-olga",
+      "employmentStatus": "FORMER",
+      "position": "Специалист поддержки",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2026-04-30"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-anna",
+      "employmentStatus": "CURRENT",
+      "position": "Специалист поддержки",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2026-04-10"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Специалист поддержки",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 5,
+        "office": 5,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2026-02-25"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-pavel",
+      "employmentStatus": "FORMER",
+      "position": "Специалист поддержки",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-01-20"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-ksenia",
+      "employmentStatus": "CURRENT",
+      "position": "Backend Engineer",
+      "overall": 3,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "В целом хорошее место, но приоритеты меняются быстрее, чем успевают обновляться планы.",
+      "createdAt": "2025-12-24"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Backend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 5,
+        "office": 5,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-12-03"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-alina",
+      "employmentStatus": "CURRENT",
+      "position": "Продакт-менеджер",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 3,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-10-31"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-alina",
+      "employmentStatus": "CURRENT",
+      "position": "Специалист поддержки",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2025-09-11"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-ilya",
+      "employmentStatus": "FORMER",
+      "position": "Backend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-08-24"
+    },
+    {
+      "company": "altyn-pay",
+      "author": "u-vera",
+      "employmentStatus": "CURRENT",
+      "position": "Backend Engineer",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 3,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2025-07-08"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-pavel",
+      "employmentStatus": "CURRENT",
+      "position": "Старший консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 5,
+        "growth": 4
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2026-09-01"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-mikhail",
+      "employmentStatus": "FORMER",
+      "position": "Старший консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2026-08-05"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-ilya",
+      "employmentStatus": "CURRENT",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 3,
+        "team": 3,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2026-07-03"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-lev",
+      "employmentStatus": "FORMER",
+      "position": "Бизнес-аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 3,
+        "office": 4,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2026-05-31"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-olga",
+      "employmentStatus": "FORMER",
+      "position": "Старший консультант",
+      "overall": 5,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 5,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2026-04-23"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-nikita",
+      "employmentStatus": "CURRENT",
+      "position": "Старший консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2026-03-24"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-nikita",
+      "employmentStatus": "FORMER",
+      "position": "Консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Условия совпали с тем, что обсуждали на интервью. Есть пространство влиять на процессы и расти внутри продукта.",
+      "createdAt": "2026-02-22"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Менеджер проектов",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 4,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Сильная команда и прозрачные ожидания. Темп высокий, но решения не принимаются в отрыве от людей.",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-daria",
+      "employmentStatus": "FORMER",
+      "position": "Бизнес-аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Офис удобный, рядом с метро, есть тихие комнаты. Гибрид работает по-честному, никто не требует сидеть «для галочки».",
+      "createdAt": "2025-12-24"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-pavel",
+      "employmentStatus": "CURRENT",
+      "position": "Консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 5,
+        "clients": 5,
+        "growth": 4
+      },
+      "text": "Нравится культура обратной связи. Ошибки разбирают без поиска виноватых, а с выводами для процесса.",
+      "createdAt": "2025-11-22"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-anna",
+      "employmentStatus": "FORMER",
+      "position": "Бизнес-аналитик",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 3,
+        "office": 4,
+        "clients": 4,
+        "growth": 5
+      },
+      "text": "Коллеги охотно делятся знаниями, внутренние митапы проходят каждую неделю. Токсичности не встречал.",
+      "createdAt": "2025-10-18"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "Старший консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 4,
+        "team": 4,
+        "office": 4,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2025-09-09"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-timur",
+      "employmentStatus": "CURRENT",
+      "position": "Консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 3,
+        "management": 4,
+        "team": 3,
+        "office": 5,
+        "clients": 4,
+        "growth": 4
+      },
+      "text": "Компания держит слово: индексация зарплаты прошла вовремя, премии выплатили в полном объёме.",
+      "createdAt": "2025-08-16"
+    },
+    {
+      "company": "meridian-consulting",
+      "author": "u-olga",
+      "employmentStatus": "FORMER",
+      "position": "Консультант",
+      "overall": 4,
+      "scores": {
+        "climate": 4,
+        "management": 3,
+        "team": 4,
+        "office": 5,
+        "clients": 5,
+        "growth": 5
+      },
+      "text": "Руководитель регулярно даёт обратную связь, цели на квартал понятны. За год вырос на грейд без лишней бюрократии.",
+      "createdAt": "2025-07-16"
+    },
+    {
+      "company": "nova-studio",
+      "author": "u-daria",
+      "employmentStatus": "FORMER",
+      "position": "Frontend Engineer",
+      "overall": 2,
+      "scores": {
+        "climate": 2,
+        "management": 1,
+        "team": 4,
+        "office": 3,
+        "clients": 2,
+        "growth": 2
+      },
+      "text": "Руководство обещало повышение после испытательного срока, но в итоге сослались на бюджет. Про переработки на интервью не предупредили.",
+      "createdAt": "2026-09-18"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+.backdrop { align-items: flex-start; background: rgba(9, 15, 25, .56); display: flex; inset: 0; justify-content: center; overflow-y: auto; padding: max(48px, 8vh) 16px 32px; position: fixed; z-index: 60; }
+.panel { background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 24px 60px rgba(9, 15, 25, .28); color: var(--c-ink); width: 100%; }
+.head { align-items: flex-start; border-bottom: 1px solid var(--c-line-soft); display: flex; gap: 16px; justify-content: space-between; padding: 22px 24px 18px; }
+.head h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; margin: 0; }
+.subtitle { color: var(--c-muted); font-size: 13px; line-height: 1.45; margin-top: 6px; }
+.close { align-items: center; background: transparent; border: 1px solid transparent; color: var(--c-muted); display: inline-flex; flex: 0 0 auto; height: 40px; justify-content: center; margin: -8px -10px 0 0; width: 40px; }
+.close:hover { background: var(--c-surface-tint); color: var(--c-ink); }
+.body { padding: 20px 24px 24px; }
+
+@media (max-width: 520px) {
+  .backdrop { padding: 16px 10px; }
+  .head, .body { padding-inline: 18px; }
+}

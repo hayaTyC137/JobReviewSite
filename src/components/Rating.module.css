@@ -1,0 +1,60 @@
+/* ---------- Score badge ---------- */
+.badge {
+  align-items: stretch;
+  background: var(--c-surface-raised);
+  border: 1px solid var(--c-line);
+  border-left-width: 3px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 76px;
+  padding: 8px 12px 9px;
+}
+.badge.good { border-left-color: var(--c-good); }
+.badge.mid { border-left-color: var(--c-accent); }
+.badge.low { border-left-color: var(--c-warn); }
+.badge.none { border-left-color: var(--c-line-strong); }
+.badgeValue { align-items: baseline; display: flex; gap: 3px; }
+.badgeValue strong { font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+.badgeValue small { color: var(--c-muted); font-family: var(--font-mono); font-size: 10px; }
+.badgeLabel { color: var(--c-muted); font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .04em; margin-top: 5px; text-transform: uppercase; white-space: nowrap; }
+.badge.large { min-width: 108px; padding: 12px 16px 13px; }
+.badge.large .badgeValue strong { font-size: 40px; }
+
+/* ---------- Criteria bars ---------- */
+.bars { display: grid; gap: 10px 22px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+.bars.twoCols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.barRow { min-width: 0; }
+.barHead { align-items: baseline; display: flex; font-size: 12px; gap: 8px; justify-content: space-between; margin-bottom: 5px; }
+.barHead span { color: var(--c-tint-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.barHead strong { font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 650; }
+.barHead strong.empty { color: var(--c-muted); font-weight: 400; }
+.track { background: var(--c-surface-tint); display: block; height: 5px; overflow: hidden; }
+.fill { background: var(--c-chart-1); display: block; height: 100%; transform-origin: left center; }
+.compact .barHead { font-size: 11px; margin-bottom: 4px; }
+.compact .barHead strong { font-size: 11px; }
+.compact .track { height: 4px; }
+
+/* ---------- Verified badge ---------- */
+.verified {
+  align-items: center;
+  background: var(--c-accent-soft);
+  border: 1px solid #c3d2ef;
+  color: var(--c-accent-ink);
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  gap: 5px;
+  letter-spacing: .03em;
+  line-height: 1;
+  padding: 4px 7px 4px 5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.verified svg { flex: 0 0 auto; }
+.verified.iconOnly { background: transparent; border: 0; padding: 0; }
+
+@media (max-width: 520px) {
+  .bars.twoCols { grid-template-columns: 1fr; }
+}

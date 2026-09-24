@@ -1,0 +1,50 @@
+# Полное окружение: PostgreSQL + Spring Boot API + фронтенд на nginx.
+# Запуск:   docker compose up --build
+# Сайт:     http://localhost:3000
+# Swagger:  http://localhost:3000/swagger-ui.html  (или напрямую http://localhost:8080/swagger-ui.html)
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: kontur
+      POSTGRES_USER: kontur
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-kontur}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kontur -d kontur"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/kontur
+      DB_USER: kontur
+      DB_PASSWORD: ${DB_PASSWORD:-kontur}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production-0123456789abcdef}
+      FRONTEND_URL: http://localhost:3000
+      CORS_ORIGINS: http://localhost:3000,http://localhost:5173
+      DEMO_DATA: ${DEMO_DATA:-true}
+      # Чтобы включить вход через Google: SPRING_PROFILES_ACTIVE=oauth + ключи в .env
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-default}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: .
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  db-data:

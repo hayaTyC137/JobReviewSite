@@ -1,0 +1,12 @@
+# Включается через SPRING_PROFILES_ACTIVE=oauth.
+# Google выступает OpenID Connect-провайдером: после входа мы выдаём собственный JWT.
+# Redirect URI для консоли Google: {адрес сайта}/login/oauth2/code/google
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: openid, profile, email

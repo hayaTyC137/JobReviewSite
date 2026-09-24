@@ -1,0 +1,30 @@
+.header { background: var(--c-deep); color: var(--c-on-dark); position: sticky; top: 0; z-index: 30; }
+.inner { align-items: center; display: flex; gap: 28px; min-height: 64px; padding: 0 var(--gutter); }
+.brand { align-items: center; display: inline-flex; font-size: 19px; font-weight: 800; gap: 9px; letter-spacing: -.01em; text-transform: lowercase; }
+.brandMark { align-items: center; background: var(--c-accent); color: var(--c-deep); display: inline-flex; height: 28px; justify-content: center; width: 28px; }
+.nav { display: flex; gap: 24px; margin-left: 28px; }
+.nav a { border-bottom: 1px solid transparent; color: var(--c-dark-muted); font-size: 13px; padding: 6px 0; transition: color .18s ease, border-color .18s ease; }
+.nav a:hover { color: var(--c-on-dark); }
+.nav a.active { border-color: var(--c-accent); color: var(--c-on-dark); }
+.actions { align-items: center; display: flex; gap: 12px; margin-left: auto; min-width: 0; }
+.demo { border: 1px dashed #52627c; color: var(--c-dark-muted); font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; padding: 5px 8px; text-transform: uppercase; white-space: nowrap; }
+.login { align-items: center; background: var(--c-accent); border: 0; color: var(--c-deep); display: inline-flex; font-size: 13px; font-weight: 700; gap: 8px; min-height: 40px; padding: 0 16px; transition: background .18s ease, transform .18s ease; }
+.login:hover { background: var(--c-accent-hover); }
+.login:active { transform: translateY(1px); }
+.user { align-items: center; display: flex; gap: 10px; min-width: 0; }
+.avatar { align-items: center; background: var(--c-dark-panel); color: var(--c-on-dark); display: inline-flex; flex: 0 0 auto; font-family: var(--font-mono); font-size: 11px; font-weight: 600; height: 32px; justify-content: center; width: 32px; }
+.userText { display: flex; flex-direction: column; min-width: 0; }
+.userText strong { font-size: 13px; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.userText small { color: var(--c-dark-muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.iconButton { align-items: center; background: transparent; border: 1px solid transparent; color: var(--c-dark-muted); display: inline-flex; height: 40px; justify-content: center; width: 40px; transition: background .18s ease, color .18s ease; }
+.iconButton:hover { background: rgba(255, 255, 255, .07); color: var(--c-on-dark); }
+
+@media (max-width: 680px) {
+  .inner { gap: 14px; padding: 0 16px; }
+  .nav { margin-left: 0; }
+  .userText, .demo { display: none; }
+}
+
+@media (max-width: 420px) {
+  .nav a:first-child { display: none; }
+}

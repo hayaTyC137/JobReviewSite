@@ -1,0 +1,46 @@
+# Основная конфигурация бэкенда. Все секреты и адреса берутся из переменных окружения,
+# значения по умолчанию подходят для локального запуска рядом с docker-compose.
+# Вход через Google включается профилем oauth: SPRING_PROFILES_ACTIVE=oauth (+ GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET).
+server:
+  port: 8080
+  # Нужно, чтобы за nginx/vite-прокси OAuth2 правильно строил redirect_uri
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: kontur-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/kontur}
+    username: ${DB_USER:kontur}
+    password: ${DB_PASSWORD:kontur}
+  jpa:
+    open-in-view: false
+    hibernate:
+      # Схемой управляет Flyway, Hibernate только сверяет её с сущностями
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+app:
+  jwt:
+    # Секрет минимум 32 символа. В проде обязательно переопределить через JWT_SECRET!
+    secret: ${JWT_SECRET:local-dev-secret-change-me-please-0123456789}
+    lifetime-minutes: ${JWT_LIFETIME_MINUTES:720}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+  demo-data:
+    enabled: ${DEMO_DATA:true}
+    password: ${DEMO_PASSWORD:demo12345}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
