@@ -1,0 +1,114 @@
+.root { display: grid; gap: 18px; }
+
+.identity { align-items: center; background: var(--c-surface-raised); border: 1px solid var(--c-line); display: flex; flex-wrap: wrap; gap: 16px; padding: 18px 20px; }
+.identity > div { flex: 1; min-width: 0; }
+.identity h2 { font-size: 22px; font-weight: 750; letter-spacing: -.02em; margin: 0; }
+.identity p { color: var(--c-muted); display: flex; flex-wrap: wrap; font-size: 13px; gap: 4px 16px; margin: 6px 0 0; }
+.identity p span { align-items: center; display: inline-flex; gap: 5px; }
+
+.ghost { align-items: center; background: transparent; border: 1px solid var(--c-line); color: var(--c-tint-ink); display: inline-flex; font-size: 12px; font-weight: 600; gap: 6px; min-height: 34px; padding: 0 10px; transition: border-color .15s ease, color .15s ease; }
+.ghost:hover { border-color: var(--c-bad); color: var(--c-bad); }
+
+.top { display: grid; gap: 18px; grid-template-columns: minmax(280px, .8fr) minmax(0, 1.4fr); }
+
+/* ---------- Итоговый рейтинг ---------- */
+.dial { background: var(--c-deep); color: var(--c-on-dark); display: flex; flex-direction: column; padding: 20px 22px; }
+.kicker, .kickerLight { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .08em; margin: 0; text-transform: uppercase; }
+.kicker { color: var(--c-dark-muted); }
+.kickerLight { color: var(--c-muted); }
+.dialRow { align-items: center; display: flex; gap: 18px; margin: 12px 0 6px; }
+.dialRow > div { display: grid; gap: 6px; }
+.dialValue { fill: var(--c-on-dark); font-size: 38px; font-variant-numeric: tabular-nums; font-weight: 750; letter-spacing: -.03em; }
+.dialMax { fill: var(--c-dark-muted); font-family: var(--font-mono); font-size: 10.5px; }
+.level { color: var(--c-accent-hover); font-size: 17px; font-weight: 700; line-height: 1.2; }
+.dialNote { color: var(--c-dark-muted); font-size: 12.5px; line-height: 1.4; }
+.penalty { align-items: center; color: #f3c2c8; display: inline-flex; font-size: 12px; gap: 5px; }
+.formulaToggle { align-items: center; align-self: flex-start; background: transparent; border: 0; border-bottom: 1px solid var(--c-dark-line); color: var(--c-dark-soft); display: inline-flex; font-size: 12px; gap: 6px; margin-top: auto; padding: 8px 0 4px; }
+.formulaToggle:hover { color: var(--c-on-dark); }
+.formula { color: var(--c-dark-soft); display: grid; font-size: 12px; gap: 6px; line-height: 1.5; margin: 10px 0 0; padding-left: 18px; }
+.flipped { transform: rotate(180deg); }
+
+/* ---------- Метрики ---------- */
+.metrics { background: var(--c-surface-raised); border: 1px solid var(--c-line); padding: 20px 22px; }
+.metricsHead { align-items: flex-start; display: flex; justify-content: space-between; margin-bottom: 18px; }
+.metricsSub { color: var(--c-muted); font-size: 12.5px; }
+.viewToggle { align-items: center; background: var(--c-surface); border: 1px solid var(--c-line); color: var(--c-tint-ink); display: inline-flex; font-size: 12px; gap: 6px; min-height: 32px; padding: 0 10px; }
+.viewToggle:hover { border-color: var(--c-line-strong); }
+.noData { color: var(--c-muted); font-size: 13px; margin: 0; padding: 30px 0; text-align: center; }
+
+.bars { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.barRow { align-items: center; display: grid; gap: 14px; grid-template-columns: 150px 1fr 34px; outline-offset: 4px; }
+.barLabel { color: var(--c-ink-soft); font-size: 13px; line-height: 1.2; }
+.barLabel small { color: var(--c-muted); display: block; font-size: 10.5px; }
+.barTrack { display: block; height: 16px; position: relative; }
+/* Сетка на делениях 1–4: волосяная, сплошная, приглушённая */
+.gridline { background: var(--c-chart-grid); bottom: -3px; position: absolute; top: -3px; width: 1px; }
+/* Толщина ≤ 24px, скругление только на конце данных, от единой базовой линии */
+.bar { background: var(--c-chart-1); border-radius: 0 4px 4px 0; display: block; height: 100%; min-width: 2px; position: relative; }
+/* Обратная шкала (токсичность): тот же цвет плюс штриховка — второй канал, не только цвет */
+.barInverted { background: repeating-linear-gradient(135deg, var(--c-chart-1) 0 5px, #e3a36a 5px 8px); }
+.barValue { color: var(--c-ink); font-size: 13px; font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; }
+.tooltip { background: var(--c-deep); bottom: calc(100% + 8px); color: var(--c-on-dark); font-size: 12px; left: 0; line-height: 1.4; max-width: 320px; padding: 8px 10px; pointer-events: none; position: absolute; z-index: 3; }
+
+.table { border-collapse: collapse; font-size: 13px; width: 100%; }
+.table th { border-bottom: 1px solid var(--c-line); color: var(--c-muted); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; padding: 8px 10px 8px 0; text-align: left; text-transform: uppercase; }
+.table td { border-bottom: 1px solid var(--c-line-soft); padding: 8px 10px 8px 0; vertical-align: top; }
+.table td:nth-child(2) { font-variant-numeric: tabular-nums; font-weight: 700; }
+.table td:last-child { color: var(--c-muted); font-size: 12px; }
+
+/* ---------- Плитки ---------- */
+.tiles { background: var(--c-line); border: 1px solid var(--c-line); display: grid; gap: 1px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
+.tiles div { background: var(--c-surface-raised); padding: 14px 18px; }
+.tiles dt { color: var(--c-muted); font-size: 12px; }
+.tiles dd { font-size: 22px; font-variant-numeric: tabular-nums; font-weight: 700; letter-spacing: -.02em; margin: 4px 0 0; }
+.alert { color: var(--c-bad); }
+
+/* ---------- Разделы ---------- */
+.section { background: var(--c-surface-raised); border: 1px solid var(--c-line); padding: 20px 22px; }
+.section h3 { align-items: center; display: flex; font-size: 16px; font-weight: 700; gap: 8px; margin: 0 0 16px; }
+.section h3 svg { color: var(--c-accent-ink); }
+.hint { align-items: center; color: var(--c-muted); display: flex; font-size: 12px; gap: 6px; margin: 12px 0 0; }
+
+.timeline { display: grid; gap: 0; list-style: none; margin: 0; padding: 0; }
+.job { border-left: 1px solid var(--c-line); margin-left: 6px; padding: 0 0 22px 22px; position: relative; }
+.job:last-child { border-left-color: transparent; padding-bottom: 0; }
+.jobDot { background: var(--c-surface-raised); border: 2px solid var(--c-accent); border-radius: 50%; height: 12px; left: -7px; position: absolute; top: 3px; width: 12px; }
+.jobHead { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; }
+.jobPosition { display: block; font-size: 15px; }
+.jobCompany { color: var(--c-tint-ink); font-size: 13px; }
+.jobCompany a { color: var(--c-accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.jobPeriod { color: var(--c-muted); display: grid; font-size: 12.5px; gap: 2px; justify-items: end; }
+.jobPeriod span { align-items: center; display: inline-flex; gap: 5px; }
+.jobPeriod small { color: var(--c-ink-soft); font-weight: 600; }
+.jobFacts { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.jobNote { color: var(--c-muted); font-size: 12.5px; }
+.evalToggle { align-items: center; background: transparent; border: 0; color: var(--c-accent-ink); display: inline-flex; font-size: 12.5px; font-weight: 600; gap: 5px; margin-top: 10px; padding: 4px 0; }
+.evaluation { background: var(--c-surface); border: 1px solid var(--c-line-soft); margin-top: 8px; padding: 14px 16px; }
+.evaluation dl { display: grid; gap: 8px 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; }
+.evaluation dl div { align-items: center; display: flex; justify-content: space-between; }
+.evaluation dt { color: var(--c-ink-soft); font-size: 12.5px; }
+.evaluation dd { align-items: center; display: inline-flex; font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 700; gap: 8px; margin: 0; }
+.pips { display: inline-flex; gap: 3px; }
+.pips i { background: var(--c-line); display: block; height: 6px; width: 12px; }
+.pips i.on { background: var(--c-chart-1); }
+.evaluation blockquote { border-left: 3px solid var(--c-accent); color: var(--c-ink-soft); font-size: 13.5px; line-height: 1.5; margin: 14px 0 0; padding: 2px 0 2px 12px; }
+.evalFoot { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; margin-top: 12px; }
+.evalFoot small { color: var(--c-muted); font-size: 12px; }
+
+.discipline { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.discipline li { border: 1px solid var(--c-line-soft); padding: 14px 16px; }
+.disciplineHead { align-items: center; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.disciplineHead strong { font-size: 14px; }
+.discipline p { color: var(--c-ink-soft); font-size: 13px; line-height: 1.5; margin: 8px 0 6px; }
+.discipline small { color: var(--c-muted); font-size: 12px; }
+
+@media (max-width: 980px) {
+  .top { grid-template-columns: 1fr; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .barRow { grid-template-columns: 1fr 34px; }
+  .barLabel { grid-column: 1 / -1; }
+  .evaluation dl { grid-template-columns: 1fr; }
+  .jobPeriod { justify-items: start; }
+}

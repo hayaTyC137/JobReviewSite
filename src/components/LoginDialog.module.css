@@ -1,0 +1,56 @@
+/* Геометрия окна входа: радиусы асимметричные и «живые» — при фокусе и наведении
+   угол перетекает на противоположную диагональ. Острые углы (2–3px) держат связь
+   с остальным интерфейсом, скруглённые (12–16px) выделяют окно как отдельный слой. */
+
+.form { gap: 15px; }
+
+.tabs { background: rgba(232, 218, 203, .55); border-radius: 3px 14px 3px 14px; display: grid; gap: 2px; grid-template-columns: 1fr 1fr; padding: 3px; }
+.tabs button { background: transparent; border: 0; color: var(--c-tint-ink); font-size: 13px; min-height: 38px; position: relative; }
+.tabs button[aria-selected="true"] { color: var(--c-ink); font-weight: 650; }
+.tabIndicator { background: var(--c-surface-raised); border-radius: 2px 11px 2px 11px; box-shadow: 0 1px 2px rgba(18, 14, 11, .08), 0 4px 12px -4px rgba(156, 77, 24, .22); inset: 0; position: absolute; }
+.tabLabel { position: relative; }
+
+.input {
+  background: rgba(255, 255, 255, .72);
+  border-color: rgba(168, 146, 127, .45);
+  border-radius: 3px 3px 14px 3px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, border-radius .35s var(--ease-out);
+}
+.input:hover { border-color: var(--c-line-strong); }
+.input:focus { background: #fff; border-radius: 14px 3px 14px 3px; box-shadow: 0 0 0 3px rgba(244, 162, 97, .22), 0 6px 18px -8px rgba(156, 77, 24, .35); }
+
+.submit {
+  background: linear-gradient(135deg, var(--c-deep), #3a2b20);
+  border-radius: 3px 16px 3px 16px;
+  box-shadow: 0 10px 24px -12px rgba(18, 14, 11, .7), inset 0 1px 0 rgba(255, 255, 255, .08);
+  transition: border-radius .35s var(--ease-out), box-shadow .2s ease, transform .15s ease, opacity .15s ease;
+}
+.submit:hover:not(:disabled) { border-radius: 16px 3px 16px 3px; box-shadow: 0 14px 30px -12px rgba(18, 14, 11, .75), 0 0 0 3px rgba(244, 162, 97, .2); }
+.submitArrow { margin-left: auto; transition: transform .25s var(--ease-out); }
+.submit:hover:not(:disabled) .submitArrow { transform: translateX(3px); }
+
+.socials { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.socials[data-count="1"] { grid-template-columns: 1fr; }
+.social {
+  align-items: center;
+  background: rgba(255, 255, 255, .78);
+  border: 1px solid rgba(168, 146, 127, .4);
+  border-radius: 3px 12px 3px 12px;
+  color: var(--c-ink);
+  display: flex;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 10px;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 12px;
+  transition: border-color .2s ease, background .2s ease, transform .2s var(--ease-out), border-radius .35s var(--ease-out);
+}
+.social:hover { background: #fff; border-color: var(--c-accent); border-radius: 12px 3px 12px 3px; transform: translateY(-1px); }
+/* Нечётное число кнопок: последняя растягивается на всю ширину */
+.socials[data-count="3"] .social:last-child, .socials[data-count="5"] .social:last-child { grid-column: 1 / -1; }
+
+.trust { align-items: center; color: var(--c-muted); display: flex; font-size: 12px; gap: 6px; justify-content: center; margin: -4px 0 0; }
+.trust svg { color: var(--c-good); }
+
+.demo { border-radius: 2px 8px 2px 8px; }

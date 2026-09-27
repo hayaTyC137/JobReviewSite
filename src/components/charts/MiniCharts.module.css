@@ -1,0 +1,16 @@
+/* Мини-графики дашборда. Одна серия на график (цвет --c-chart-1, проверен валидатором),
+   текст — только текстовыми токенами, сетка волосяная и сплошная. */
+.figure { margin: 0; min-width: 0; }
+.caption { color: var(--c-ink-soft); font-size: 13px; font-weight: 650; margin-bottom: 8px; }
+.wrap { position: relative; }
+.svg { display: block; height: auto; overflow: visible; width: 100%; }
+.grid { stroke: var(--c-chart-grid); stroke-width: 1; }
+.tick { fill: var(--c-muted); font-family: var(--font-mono); font-size: 10px; }
+.value { fill: var(--c-ink); font-size: 11px; font-weight: 700; }
+.bar { fill: var(--c-chart-1); transition: opacity .15s ease; }
+.dim { opacity: .45; }
+.line { fill: none; stroke: var(--c-chart-1); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+.dot { fill: var(--c-chart-1); stroke: var(--c-surface-raised); stroke-width: 2; }
+.crosshair { stroke: var(--c-line-strong); stroke-width: 1; }
+.tooltip { background: var(--c-deep); color: var(--c-on-dark); display: grid; font-size: 12px; gap: 2px; padding: 7px 10px; pointer-events: none; position: absolute; top: -6px; transform: translate(-50%, -100%); white-space: nowrap; z-index: 3; }
+.tooltip span { color: var(--c-dark-soft); }

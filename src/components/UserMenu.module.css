@@ -1,0 +1,23 @@
+.root { position: relative; }
+.login { align-items: center; background: var(--c-accent); border: 0; color: var(--c-deep); display: inline-flex; font-size: 13px; font-weight: 700; gap: 8px; min-height: 40px; padding: 0 16px; transition: background .18s ease, transform .18s ease; }
+.login:hover { background: var(--c-accent-hover); }
+.login:active { transform: translateY(1px); }
+
+.trigger { align-items: center; background: transparent; border: 1px solid transparent; color: var(--c-on-dark); display: flex; gap: 10px; max-width: 280px; min-height: 44px; padding: 4px 8px 4px 4px; transition: background .18s ease, border-color .18s ease; }
+.trigger:hover, .trigger[aria-expanded="true"] { background: rgba(255, 255, 255, .06); border-color: var(--c-dark-line); }
+.trigger > svg:last-child { color: var(--c-dark-muted); flex: 0 0 auto; transition: transform .2s ease; }
+.flipped { transform: rotate(180deg); }
+.text { display: flex; flex-direction: column; min-width: 0; text-align: left; }
+.text strong { font-size: 13px; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.text small { color: var(--c-dark-muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.menu { background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 18px 44px -12px rgba(18, 14, 11, .45), 0 2px 6px rgba(18, 14, 11, .12); display: grid; min-width: 240px; padding: 6px; position: absolute; right: 0; top: calc(100% + 8px); transform-origin: top right; z-index: 50; }
+.role { color: var(--c-muted); font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .08em; margin: 4px 10px 6px; text-transform: uppercase; }
+.menu a, .menu button { align-items: center; background: transparent; border: 0; color: var(--c-ink); display: flex; font-size: 13.5px; gap: 10px; min-height: 40px; padding: 0 10px; text-align: left; transition: background .15s ease; width: 100%; }
+.menu a:hover, .menu button:hover { background: var(--c-surface-tint); }
+.menu a svg, .menu button svg { color: var(--c-tint-ink); }
+.menu button { border-top: 1px solid var(--c-line-soft); margin-top: 4px; }
+
+@media (max-width: 680px) {
+  .text { display: none; }
+}

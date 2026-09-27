@@ -1,0 +1,85 @@
+/* Новые блоки главной: цифры платформы, симулятор рейтинга, FAQ.
+   Живут внутри .page-shell и пользуются его локальными переменными (см. HomePage.css). */
+
+/* ---------- Платформа в цифрах ---------- */
+.hx-stats { background: var(--deep); color: var(--on-dark); display: grid; gap: 48px; grid-template-columns: minmax(260px, .7fr) minmax(0, 1.3fr); padding: 96px var(--gutter); position: relative; }
+.hx-stats::before { background: radial-gradient(circle at 12% 30%, rgba(244, 162, 97, .16), rgba(244, 162, 97, 0) 45%); content: ""; inset: 0; pointer-events: none; position: absolute; }
+.hx-stats > * { position: relative; }
+.hx-stats .section-kicker { color: var(--accent); }
+.hx-stats h2 { color: var(--on-dark); }
+.hx-stats-head > p:last-child { color: var(--dark-soft); font-size: 14px; line-height: 1.6; margin-top: 20px; max-width: 360px; }
+.hx-stats-grid { border-left: 1px solid var(--dark-line); border-top: 1px solid var(--dark-line); display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); list-style: none; margin: 0; padding: 0; }
+.hx-stat { border-bottom: 1px solid var(--dark-line); border-right: 1px solid var(--dark-line); display: grid; gap: 8px; min-height: 150px; padding: 20px; transition: background .25s ease; }
+.hx-stat:hover { background: rgba(255, 255, 255, .03); }
+.hx-stat-icon { color: var(--accent); }
+.hx-stat strong { font-size: clamp(34px, 3.4vw, 48px); font-variant-numeric: tabular-nums; font-weight: 650; letter-spacing: -.03em; line-height: 1; }
+.hx-stat > span:last-child { color: var(--dark-muted); font-size: 12.5px; line-height: 1.45; }
+.hx-stat.is-skeleton { animation: hx-pulse 1.2s ease-in-out infinite alternate; background: rgba(255, 255, 255, .03); }
+@keyframes hx-pulse { to { background: rgba(255, 255, 255, .07); } }
+
+/* ---------- Прозрачный рейтинг ---------- */
+.hx-sim { align-items: start; display: grid; gap: 56px; grid-template-columns: minmax(280px, .85fr) minmax(0, 1.15fr); padding: 108px var(--gutter); }
+.hx-sim-copy > p:not(.section-kicker) { color: var(--tint-ink); font-size: 15px; line-height: 1.6; margin: 20px 0 0; max-width: 420px; }
+.hx-rules { display: grid; gap: 12px; list-style: none; margin: 28px 0 0; padding: 0; }
+.hx-rules li { align-items: flex-start; display: flex; font-size: 13.5px; gap: 10px; line-height: 1.45; }
+.hx-rules svg { color: var(--c-good); flex: 0 0 auto; margin-top: 1px; }
+
+.hx-sim-panel { background: var(--paper); border: 1px solid var(--line); box-shadow: 12px 12px 0 var(--surface-tint); padding: 24px; }
+.hx-sim-top { align-items: flex-end; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; padding-bottom: 20px; }
+.hx-sim-score span { color: var(--muted); display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.hx-sim-score strong { display: block; font-size: 64px; font-variant-numeric: tabular-nums; font-weight: 700; letter-spacing: -.05em; line-height: 1; margin: 6px 0; }
+.hx-sim-score small { color: var(--tint-ink); font-size: 12px; }
+.hx-sim-switch { background: var(--surface-tint-strong); display: inline-flex; padding: 4px; }
+.hx-sim-switch button { background: transparent; border: 0; color: var(--tint-ink); font-size: 12px; min-height: 40px; padding: 0 12px; transition: background .2s ease, color .2s ease; }
+.hx-sim-switch button[aria-pressed="true"] { background: var(--ink); color: #fff; font-weight: 700; }
+
+.hx-sim-list { display: grid; gap: 8px; list-style: none; margin: 18px 0 0; padding: 0; }
+.hx-sim-item { align-items: flex-start; background: var(--paper-soft); border: 1px solid var(--line); display: grid; gap: 12px; grid-template-columns: 48px 1fr auto; padding: 12px; transition: opacity .25s ease, background .25s ease, border-color .25s ease; }
+.hx-sim-item.is-blocked, .hx-sim-item.is-hidden { background: transparent; border-style: dashed; }
+.hx-sim-item.is-blocked .hx-sim-body > strong, .hx-sim-item.is-blocked .hx-sim-body > span,
+.hx-sim-item.is-hidden .hx-sim-body > strong, .hx-sim-item.is-hidden .hx-sim-body > span { opacity: .5; text-decoration: line-through; text-decoration-color: rgba(42, 31, 24, .35); }
+.hx-sim-stars { align-items: center; background: var(--accent-soft); color: var(--accent-ink); display: inline-flex; font-size: 14px; font-variant-numeric: tabular-nums; font-weight: 800; gap: 3px; justify-content: center; min-height: 36px; }
+.is-blocked .hx-sim-stars, .is-hidden .hx-sim-stars { background: var(--surface-tint); color: var(--muted); }
+.hx-sim-body { display: grid; gap: 3px; min-width: 0; }
+.hx-sim-body strong { font-size: 13px; }
+.hx-sim-body small { color: var(--muted); font-weight: 400; }
+.hx-sim-body > span { color: var(--ink-soft); font-size: 13px; }
+.hx-sim-body em { align-items: center; color: var(--c-bad); display: flex; font-size: 12px; font-style: normal; font-weight: 600; gap: 6px; overflow: hidden; }
+.hx-sim-toggle { align-items: center; background: transparent; border: 1px solid var(--line); color: var(--tint-ink); display: inline-flex; height: 36px; justify-content: center; transition: border-color .2s ease, color .2s ease; width: 36px; }
+.hx-sim-toggle:hover, .hx-sim-toggle[aria-pressed="true"] { border-color: var(--accent); color: var(--accent-ink); }
+.hx-sim-foot { align-items: center; color: var(--muted); display: flex; flex-wrap: wrap; font-size: 12px; gap: 4px; margin: 14px 0 0; }
+
+/* ---------- FAQ ---------- */
+.hx-faq { background: var(--surface-tint); display: grid; gap: 56px; grid-template-columns: minmax(260px, .7fr) minmax(0, 1.3fr); padding: 104px var(--gutter); }
+.hx-faq-head > p:last-child { color: var(--tint-ink); font-size: 14px; line-height: 1.6; margin-top: 20px; max-width: 340px; }
+.hx-faq-head a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.hx-faq-list { border-top: 1px solid #d4c3b3; margin: 0; }
+.hx-faq-item { border-bottom: 1px solid #d4c3b3; }
+.hx-faq-item dt { margin: 0; }
+.hx-faq-item button { align-items: center; background: transparent; border: 0; color: var(--ink); display: grid; font-size: 16px; font-weight: 650; gap: 16px; grid-template-columns: 34px 1fr auto; line-height: 1.35; min-height: 72px; padding: 16px 0; text-align: left; transition: color .2s ease; width: 100%; }
+.hx-faq-item button:hover { color: var(--accent-ink); }
+.hx-faq-num { color: var(--accent-muted); font-family: var(--font-mono); font-size: 10px; font-weight: 600; }
+.hx-faq-icon { color: var(--accent-ink); transition: transform .3s cubic-bezier(.16, 1, .3, 1); }
+.hx-faq-item.is-open .hx-faq-icon { transform: rotate(45deg); }
+.hx-faq-item dd { margin: 0; overflow: hidden; }
+.hx-faq-item dd p { color: var(--tint-ink); font-size: 14px; line-height: 1.65; margin: 0; max-width: 720px; padding: 0 40px 22px 50px; }
+
+@media (max-width: 1024px) {
+  .hx-stats, .hx-sim, .hx-faq { gap: 36px; grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .hx-stats, .hx-sim, .hx-faq { padding: 72px 18px; }
+  .hx-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hx-stat { min-height: 128px; padding: 16px; }
+  .hx-sim-panel { box-shadow: 6px 6px 0 var(--surface-tint); padding: 16px; }
+  .hx-sim-score strong { font-size: 52px; }
+  .hx-faq-item button { font-size: 15px; grid-template-columns: 26px 1fr auto; }
+  .hx-faq-item dd p { padding: 0 0 20px 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hx-stat.is-skeleton { animation: none; }
+  .hx-faq-icon { transition: none; }
+}
+
+/* После симулятора нет «нависающей» карточки из секции «Проверка с контекстом» — большой верхний отступ не нужен */
+.hx-sim + .reviews-section { padding-top: 24px; }

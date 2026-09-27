@@ -1,0 +1,58 @@
+/* Общие элементы кабинетов. Геометрия проекта: почти квадратные поверхности (0–2px), тонкие рамки. */
+
+.tabs { border-bottom: 1px solid var(--c-line); display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { align-items: center; background: transparent; border: 0; color: var(--c-muted); display: inline-flex; flex: 0 0 auto; font-size: 13.5px; gap: 8px; min-height: 46px; padding: 0 14px; position: relative; transition: color .18s ease; white-space: nowrap; }
+.tabs button:hover { color: var(--c-ink); }
+.tabs button[aria-selected="true"] { color: var(--c-ink); font-weight: 650; }
+.underline { background: var(--c-accent); bottom: -1px; height: 2px; left: 10px; position: absolute; right: 10px; }
+.count { background: var(--c-accent-soft); color: var(--c-accent-ink); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; line-height: 1; padding: 4px 6px; }
+
+.badge { align-items: center; display: inline-flex; font-size: 11.5px; font-weight: 600; gap: 5px; line-height: 1; padding: 5px 8px; white-space: nowrap; }
+.good { background: var(--c-good-soft); color: #24503f; }
+.warn { background: var(--c-warn-soft); color: #6d4a17; }
+.bad { background: var(--c-bad-soft); color: #6e2e36; }
+.neutral { background: var(--c-surface-tint); color: var(--c-tint-ink); }
+.info { background: var(--c-accent-soft); color: var(--c-accent-ink); }
+
+.avatar { align-items: center; background: var(--c-surface-tint-strong); color: var(--c-ink); display: inline-flex; flex: 0 0 auto; font-family: var(--font-mono); font-weight: 600; justify-content: center; object-fit: cover; }
+
+.empty { align-items: center; border: 1px dashed var(--c-line-strong); color: var(--c-muted); display: grid; font-size: 13.5px; gap: 6px; justify-items: center; line-height: 1.5; padding: 42px 24px; text-align: center; }
+.empty strong { color: var(--c-ink); font-size: 15px; }
+.emptyIcon { color: var(--c-accent-ink); }
+
+.loading { align-items: center; color: var(--c-muted); display: flex; font-size: 13px; gap: 10px; justify-content: center; padding: 48px 0; }
+.loading svg { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .loading svg { animation: none; } }
+
+.errorNote { align-items: flex-start; background: var(--c-bad-soft); border-left: 3px solid var(--c-bad); color: #6e2e36; display: flex; font-size: 13px; gap: 8px; line-height: 1.5; margin: 0; padding: 12px 14px; }
+.errorNote svg { flex: 0 0 auto; margin-top: 2px; }
+
+/* ---------- Загрузка изображений ---------- */
+.upload { align-items: center; display: flex; gap: 14px; }
+.uploadPreview { align-items: center; background: var(--c-surface-tint); border: 1px solid var(--c-line); color: var(--c-tint-ink); display: flex; flex: 0 0 auto; font-family: var(--font-mono); font-size: 18px; font-weight: 600; justify-content: center; overflow: hidden; }
+.uploadPreview img { height: 100%; object-fit: cover; width: 100%; }
+.upload-round .uploadPreview { border-radius: 50%; height: 72px; width: 72px; }
+.upload-square .uploadPreview { height: 72px; width: 72px; }
+.upload-wide { align-items: stretch; flex-direction: column; }
+.upload-wide .uploadPreview { aspect-ratio: 4 / 1; width: 100%; }
+.uploadBody { display: grid; gap: 4px; min-width: 0; }
+.uploadBody strong { font-size: 13px; }
+.uploadBody small { color: var(--c-muted); font-size: 11.5px; }
+.uploadActions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.uploadActions button { align-items: center; background: var(--c-surface-raised); border: 1px solid var(--c-line); color: var(--c-ink); display: inline-flex; font-size: 12px; font-weight: 600; gap: 6px; min-height: 34px; padding: 0 11px; }
+.uploadActions button:hover:not(:disabled) { border-color: var(--c-accent); }
+.uploadError { color: var(--c-bad); font-size: 12px; }
+
+/* ---------- Решение модератора ---------- */
+.decision { align-items: center; border-top: 1px solid var(--c-line-soft); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 14px; }
+.decision input { background: var(--c-surface); border: 1px solid var(--c-line); flex: 1 1 220px; font-size: 13px; min-height: 40px; padding: 0 12px; }
+.decision input:focus { border-color: var(--c-accent); outline: 0; }
+.decision > div { display: flex; gap: 6px; }
+.approve, .reject { align-items: center; border: 1px solid; display: inline-flex; font-size: 12.5px; font-weight: 700; gap: 6px; min-height: 40px; padding: 0 14px; transition: background .15s ease; }
+.approve { background: var(--c-good); border-color: var(--c-good); color: #fff; }
+.approve:hover:not(:disabled) { background: #336654; }
+.reject { background: var(--c-surface-raised); border-color: var(--c-line); color: var(--c-bad); }
+.reject:hover:not(:disabled) { background: var(--c-bad-soft); }
+.decisionError { color: var(--c-bad); flex-basis: 100%; font-size: 12px; }

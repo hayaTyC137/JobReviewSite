@@ -1,0 +1,67 @@
+# Полное окружение: PostgreSQL + Spring Boot API + фронтенд на nginx.
+# Запуск:   docker compose up --build
+# Сайт:     http://localhost:3000
+# Swagger:  http://localhost:3000/swagger-ui.html  (или напрямую http://localhost:8080/swagger-ui.html)
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: kontur
+      POSTGRES_USER: kontur
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-kontur}
+    ports:
+      # Порт на хосте меняется через DB_PORT, если 5432 уже занят локальным PostgreSQL
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kontur -d kontur"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/kontur
+      DB_USER: kontur
+      DB_PASSWORD: ${DB_PASSWORD:-kontur}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production-0123456789abcdef}
+      FRONTEND_URL: http://localhost:3000
+      CORS_ORIGINS: http://localhost:3000,http://localhost:5173
+      DEMO_DATA: ${DEMO_DATA:-true}
+      # Первый администратор для установки без демо-данных (создаётся, если в базе нет ни одного ADMIN)
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      UPLOADS_DIR: /data/uploads
+      # Вход через соцсети: провайдер включается сам, если заданы оба ключа
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+      FACEBOOK_CLIENT_ID: ${FACEBOOK_CLIENT_ID:-}
+      FACEBOOK_CLIENT_SECRET: ${FACEBOOK_CLIENT_SECRET:-}
+      YANDEX_CLIENT_ID: ${YANDEX_CLIENT_ID:-}
+      YANDEX_CLIENT_SECRET: ${YANDEX_CLIENT_SECRET:-}
+      LINKEDIN_CLIENT_ID: ${LINKEDIN_CLIENT_ID:-}
+      LINKEDIN_CLIENT_SECRET: ${LINKEDIN_CLIENT_SECRET:-}
+    volumes:
+      # Аватары, логотипы и баннеры переживают пересборку контейнера
+      - uploads:/data/uploads
+    ports:
+      # Порт на хосте меняется через BACKEND_PORT (фронтенд в Docker ходит в бэкенд по внутренней сети)
+      - "${BACKEND_PORT:-8080}:8080"
+
+  frontend:
+    build: .
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  db-data:
+  uploads:
