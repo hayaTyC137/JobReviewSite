@@ -1,6 +1,6 @@
 package com.jobreview.security;
 
-import com.jobreview.repository.UserRepository;
+import com.jobreview.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

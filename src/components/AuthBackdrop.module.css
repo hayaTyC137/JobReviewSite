@@ -1,0 +1,51 @@
+/* Фон окна входа: мягкие пятна тёплого света и всплывающие частицы. Только transform и opacity. */
+.root { inset: 0; overflow: hidden; pointer-events: none; position: fixed; z-index: 0; }
+
+.blob { border-radius: 50%; filter: blur(64px); opacity: .55; position: absolute; will-change: transform; }
+.blobA {
+  animation: drift-a 22s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 40% 40%, rgba(244, 162, 97, .9), rgba(244, 162, 97, 0) 68%);
+  height: 46vmax; left: -12vmax; top: -10vmax; width: 46vmax;
+}
+.blobB {
+  animation: drift-b 27s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 60% 50%, rgba(63, 122, 140, .75), rgba(63, 122, 140, 0) 70%);
+  bottom: -16vmax; height: 52vmax; right: -14vmax; width: 52vmax;
+}
+.blobC {
+  animation: drift-c 31s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(247, 183, 127, .55), rgba(247, 183, 127, 0) 70%);
+  height: 30vmax; left: 38%; opacity: .4; top: 44%; width: 30vmax;
+}
+
+@keyframes drift-a { to { transform: translate3d(14vmax, 10vmax, 0) scale(1.12); } }
+@keyframes drift-b { to { transform: translate3d(-12vmax, -9vmax, 0) scale(.92); } }
+@keyframes drift-c { 0% { transform: translate3d(-8vmax, 4vmax, 0); } 100% { transform: translate3d(10vmax, -8vmax, 0) scale(1.2); } }
+
+/* Тонкая сетка «реестра» проступает только в центре */
+.grid { color: rgba(251, 243, 234, .05); inset: 0; position: absolute; }
+
+.particle {
+  animation-iteration-count: infinite;
+  animation-name: rise;
+  animation-timing-function: linear;
+  background: #fbe1cc;
+  border-radius: 50%;
+  bottom: -12px;
+  box-shadow: 0 0 10px rgba(244, 162, 97, .8);
+  opacity: 0;
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+@keyframes rise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0); }
+  12% { opacity: var(--peak); }
+  80% { opacity: calc(var(--peak) * .6); }
+  100% { opacity: 0; transform: translate3d(var(--drift), -105vh, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob, .particle { animation: none; }
+  .particle { opacity: .25; }
+}

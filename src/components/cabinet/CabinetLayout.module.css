@@ -1,0 +1,15 @@
+.page { background: var(--c-canvas); min-height: 100vh; }
+.hero { align-items: flex-end; background: var(--c-deep); color: var(--c-on-dark); display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; padding: 34px var(--gutter) 30px; position: relative; }
+.hero::after { background: linear-gradient(90deg, var(--c-accent), rgba(244, 162, 97, 0) 60%); bottom: 0; content: ""; height: 2px; left: var(--gutter); position: absolute; right: var(--gutter); }
+.heroText { min-width: 0; }
+.kicker { color: var(--c-accent); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .08em; margin: 0 0 10px; text-transform: uppercase; }
+.hero h1 { font-size: clamp(28px, 4vw, 46px); font-weight: 750; letter-spacing: -.03em; line-height: 1.02; margin: 0; overflow-wrap: anywhere; }
+.subtitle { color: var(--c-dark-muted); font-size: 14px; line-height: 1.5; margin-top: 10px; max-width: 720px; }
+.aside { display: flex; flex-wrap: wrap; gap: 10px; }
+.content { display: grid; gap: 22px; padding: 26px var(--gutter) 100px; }
+
+@media (max-width: 680px) {
+  .hero { padding: 26px 16px 22px; }
+  .hero::after { left: 16px; right: 16px; }
+  .content { padding: 20px 16px 80px; }
+}

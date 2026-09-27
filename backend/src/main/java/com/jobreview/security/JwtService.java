@@ -1,7 +1,6 @@
 package com.jobreview.security;
 
-import com.jobreview.model.Role;
-import com.jobreview.model.User;
+import com.jobreview.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -45,19 +44,18 @@ public class JwtService {
     }
 
     /**
-     * Разбирает токен. Если подпись неверна или срок истёк — возвращает пустой Optional,
-     * и запрос просто считается анонимным.
+     * Разбирает токен и возвращает id пользователя. Если подпись неверна или срок истёк —
+     * пустой Optional, и запрос просто считается анонимным. Роль в токене — только подсказка
+     * для клиента: права всегда берутся из базы (см. JwtAuthenticationFilter).
      */
-    public Optional<UserPrincipal> parse(String token) {
+    public Optional<Long> parseUserId(String token) {
         try {
             Claims claims = Jwts.parser()
                     .verifyWith(key)
                     .build()
                     .parseSignedClaims(token)
                     .getPayload();
-            Long id = Long.valueOf(claims.getSubject());
-            Role role = Role.valueOf(claims.get("role", String.class));
-            return Optional.of(new UserPrincipal(id, claims.get("email", String.class), null, role));
+            return Optional.of(Long.valueOf(claims.getSubject()));
         } catch (JwtException | IllegalArgumentException ex) {
             return Optional.empty();
         }

@@ -6,14 +6,24 @@ import { CRITERIA } from '../lib/criteria'
 import type {
   AuthResponse, AuthorCard, CandidateRating, CompanyAnalytics, CompanyDetails, CompanySearchParams,
   CompanySummary, CreateReviewPayload, Criteria, CriterionKey, Locations, Page, RatingScores,
-  RatingSummary, RegisterPayload, Review, User, Appeal, EmploymentStatus, Role,
+  RatingSummary, RegisterPayload, Review, User, Appeal, EmploymentStatus, Role, CompanyStatus, DismissalReason,
+  DisciplineEntry, DisciplineSeverity, DisciplineStatus, EmployeeProfile, EmployeeScore, EmploymentEntry, EvaluationKey,
+  EvaluationScores, Providers, PublicSettings, PublicStats, Ticket, TicketPayload,
 } from './types'
 import { ApiError } from './errors'
 
-type DemoUser = { key: string; email: string; displayName: string; jobTitle: string; city: string; createdAt: string; role?: string; company?: string }
-type DemoCompany = Omit<CompanyDetails, 'id' | 'rating' | 'representative'>
+type DemoUser = { key: string; email: string; displayName: string; fullName?: string; jobTitle: string; city: string; country?: string; createdAt: string; role?: string; company?: string; verified?: boolean }
+type DemoCompany = Omit<CompanyDetails, 'id' | 'rating' | 'representative'> & { status?: CompanyStatus }
+type DemoEmployment = {
+  employee: string; company: string; recordedBy: string; position: string; startDate: string; endDate?: string
+  dismissalReason?: DismissalReason; dismissalNote?: string; evaluation?: EvaluationScores & { comment?: string }
+}
+type DemoDiscipline = {
+  employee: string; company: string; severity: DisciplineSeverity; title: string; description: string; occurredOn: string
+  status: DisciplineStatus; moderatorComment?: string
+}
 type DemoReview = { company: string; author: string; employmentStatus: string; position: string; overall: number; scores: RatingScores; text: string; createdAt: string }
-type DemoFile = { users: DemoUser[]; companies: DemoCompany[]; reviews: DemoReview[] }
+type DemoFile = { users: DemoUser[]; companies: DemoCompany[]; reviews: DemoReview[]; employment?: DemoEmployment[]; discipline?: DemoDiscipline[] }
 
 type MockUser = User & { password: string; createdAt: string }
 type MockReview = Omit<Review, 'pendingAppeal'> & { companySlug: string }
@@ -24,8 +34,10 @@ const demo = demoJson as DemoFile
 
 // ---------- Состояние демо-базы в памяти ----------
 
-const companies: DemoCompany[] = demo.companies
-const companyIds = new Map(companies.map((c, index) => [c.slug, index + 1]))
+// Заявки на модерации в каталоге не показываются — как и на бэкенде
+const allCompanies: DemoCompany[] = demo.companies
+const companies: DemoCompany[] = allCompanies.filter((c) => (c.status ?? 'APPROVED') === 'APPROVED')
+const companyIds = new Map(allCompanies.map((c, index) => [c.slug, index + 1]))
 
 const users: MockUser[] = demo.users.map((u, index) => ({
   id: index + 1,
@@ -33,17 +45,22 @@ const users: MockUser[] = demo.users.map((u, index) => ({
   displayName: u.displayName,
   jobTitle: u.jobTitle,
   city: u.city,
+  country: u.country ?? null,
+  fullName: u.fullName ?? null,
   role: (u.role ?? 'USER') as Role,
   companyId: u.company ? companyIds.get(u.company) ?? null : null,
   companySlug: u.company ?? null,
-  companyName: u.company ? companies.find((c) => c.slug === u.company)?.name ?? null : null,
-  representativeVerified: Boolean(u.company),
+  companyName: u.company ? allCompanies.find((c) => c.slug === u.company)?.name ?? null : null,
+  companyStatus: u.company ? allCompanies.find((c) => c.slug === u.company)?.status ?? 'APPROVED' : null,
+  representativeVerified: Boolean(u.company) && u.verified !== false,
+  profileCompleted: true,
   password: DEMO_PASSWORD,
   createdAt: u.createdAt,
 }))
 const userIdByKey = new Map(demo.users.map((u, index) => [u.key, index + 1]))
 
 let reviews: MockReview[] = demo.reviews
+  .filter((r) => companies.some((c) => c.slug === r.company))
   .map((r, index) => {
     const author = users[(userIdByKey.get(r.author) ?? 1) - 1]
     return {
@@ -181,20 +198,18 @@ export const mockApi = {
     return delay(paginate(summaries, params.page ?? 0, params.size ?? 10))
   },
 
-  async getLocations(): Promise<Locations> {
-    const pairs = [...new Map(companies.map((c) => [`${c.country}|${c.city}`, { country: c.country, city: c.city }])).values()]
-      .sort((a, b) => a.country.localeCompare(b.country, 'ru') || a.city.localeCompare(b.city, 'ru'))
-    return delay({ countries: [...new Set(pairs.map((p) => p.country))], cities: pairs }, 60)
-  },
+  getLocations: (): Promise<Locations> => mockCabinetApi.locations(),
 
   async getCompany(slug: string): Promise<CompanyDetails> {
     const company = findCompany(slug)
-    const rep = users.find((u) => u.companySlug === slug && u.role === 'REPRESENTATIVE' && u.representativeVerified)
+    const reps = users.filter((u) => u.companySlug === slug && u.role === 'REPRESENTATIVE' && u.representativeVerified)
+      .map((rep) => ({ id: rep.id, displayName: rep.displayName, jobTitle: rep.jobTitle }))
     return delay({
       ...company,
       id: companyIds.get(slug) ?? 0,
       rating: ratingFor(slug),
-      representative: rep ? { id: rep.id, displayName: rep.displayName, jobTitle: rep.jobTitle } : null,
+      representative: reps[0] ?? null,
+      representatives: reps,
     })
   },
 
@@ -273,9 +288,11 @@ export const mockApi = {
     return delay(publicUser(userFromToken(token)), 40)
   },
 
-  async providers(): Promise<{ password: boolean; google: boolean }> {
-    return { password: true, google: false }
+  async providers(): Promise<Providers> {
+    return { password: true }
   },
+
+  ...mockCabinetApiProxy(),
 
   async createReview(token: string | null, slug: string, payload: CreateReviewPayload): Promise<Review> {
     const user = userFromToken(token)
@@ -309,6 +326,159 @@ export const mockApi = {
     const { representativeId: _rep, ...rest } = appeal
     return delay(rest)
   },
+}
+
+// ---------- Кабинеты в демо-режиме: только то, что имеет смысл без сервера ----------
+
+/** Справочник городов — копия миграции V2 (таблица cities) */
+const CITY_CATALOG: Array<[string, string[]]> = [
+  ['Россия', ['Москва', 'Санкт-Петербург', 'Казань', 'Екатеринбург', 'Новосибирск', 'Нижний Новгород']],
+  ['Беларусь', ['Минск', 'Гродно', 'Брест']],
+  ['Казахстан', ['Алматы', 'Астана', 'Шымкент']],
+  ['Молдова', ['Кишинёв', 'Бельцы', 'Тирасполь', 'Бендеры', 'Кагул', 'Унгены', 'Сороки', 'Оргеев', 'Комрат', 'Стрэшень', 'Хынчешть', 'Единец']],
+]
+
+const tickets: Array<Ticket & { userId: number | null }> = []
+
+const DISMISSAL_LABELS: Record<DismissalReason, string> = {
+  OWN_WISH: 'По собственному желанию', MUTUAL_AGREEMENT: 'По соглашению сторон', CONTRACT_END: 'Истечение срока договора',
+  REDUNDANCY: 'Сокращение штата', RELOCATION: 'Переезд или перевод', PROBATION_FAILED: 'Не пройден испытательный срок',
+  DISCIPLINARY: 'Дисциплинарное нарушение', OTHER: 'Иная причина',
+}
+const SEVERITY_LABELS: Record<DisciplineSeverity, string> = { REMARK: 'Замечание', WARNING: 'Предупреждение', REPRIMAND: 'Выговор' }
+const METRICS: Array<[EvaluationKey, string, boolean]> = [
+  ['toxicity', 'Токсичность', true], ['composure', 'Уравновешенность', false], ['productivity', 'Продуктивность', false],
+  ['teamwork', 'Командная работа', false], ['reliability', 'Надёжность', false], ['communication', 'Коммуникация', false],
+]
+
+function monthsBetween(from: string, to: string): number {
+  const a = new Date(from)
+  const b = new Date(to)
+  let months = (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth())
+  if (b.getDate() < a.getDate()) months -= 1
+  return Math.max(0, months)
+}
+
+/** Копия правил EmployeeScoreCalculator.java */
+function employeeScore(evaluations: EvaluationScores[], confirmed: number): EmployeeScore {
+  const metrics = METRICS.map(([key, label, inverted]) => ({ key, label, inverted, average: average(evaluations.map((e) => e[key])) }))
+  const penalty = Math.min(25, confirmed * 5)
+  if (evaluations.length === 0) return { score: null, level: 'Нет оценок работодателей', evaluationsCount: 0, metrics, disciplinePenalty: penalty }
+  const base = evaluations.reduce((sum, e) => sum + ((6 - e.toxicity) + e.composure + e.productivity + e.teamwork + e.reliability + e.communication) / 6, 0) / evaluations.length
+  const score = Math.max(0, Math.min(100, Math.round((base - 1) / 4 * 100 - penalty)))
+  const level = score >= 85 ? 'Образцовый сотрудник' : score >= 70 ? 'Надёжный специалист' : score >= 50 ? 'Стабильный уровень' : 'Есть зоны роста'
+  return { score, level, evaluationsCount: evaluations.length, metrics, disciplinePenalty: penalty }
+}
+
+export const mockCabinetApi = {
+  async stats(): Promise<PublicStats> {
+    const visible = reviews.filter((r) => r.status !== 'HIDDEN' && companies.some((c) => c.slug === r.companySlug))
+    const monthAgo = new Date(Date.now() - 30 * 86_400_000).toISOString()
+    return delay({
+      companies: companies.length,
+      reviews: visible.length,
+      users: users.length,
+      averageRating: average(visible.map((r) => r.overall)),
+      countries: new Set(companies.map((c) => c.country)).size,
+      cities: new Set(companies.map((c) => `${c.country}|${c.city}`)).size,
+      reviewsLast30Days: visible.filter((r) => r.createdAt >= monthAgo).length,
+      verifiedCompanies: new Set(users.filter((u) => u.role === 'REPRESENTATIVE' && u.representativeVerified).map((u) => u.companySlug)).size,
+      resolvedDisputes: 0,
+    }, 120)
+  },
+
+  async publicSettings(): Promise<PublicSettings> {
+    return { 'registration.enabled': 'true', 'support.email': 'support@kontur.work', 'platform.announcement': '' }
+  },
+
+  async employeeProfile(token: string | null, userId: number | null): Promise<EmployeeProfile> {
+    const viewer = userFromToken(token)
+    const targetId = userId ?? viewer.id
+    const own = targetId === viewer.id
+    const staff = viewer.role === 'MODERATOR' || viewer.role === 'ADMIN'
+    if (!own && !staff && !(viewer.role === 'REPRESENTATIVE' && viewer.representativeVerified)) {
+      throw new ApiError(403, 'Карточку сотрудника видят сам сотрудник, подтверждённые представители компаний и модераторы')
+    }
+    const target = users.find((u) => u.id === targetId)
+    if (!target) throw new ApiError(404, 'Пользователь не найден')
+    const key = demo.users[targetId - 1]?.key
+    const today = new Date().toISOString().slice(0, 10)
+    const history = (demo.employment ?? []).filter((e) => e.employee === key)
+      .sort((a, b) => b.startDate.localeCompare(a.startDate))
+      .map((e, index): EmploymentEntry => {
+        const company = allCompanies.find((c) => c.slug === e.company)
+        const author = demo.users.find((u) => u.key === e.recordedBy)
+        return {
+          id: index + 1, companyId: companyIds.get(e.company) ?? 0, companyName: company?.name ?? e.company,
+          companySlug: companies.some((c) => c.slug === e.company) ? e.company : null, companyLogoUrl: null,
+          position: e.position, startDate: e.startDate, endDate: e.endDate ?? null, tenureMonths: monthsBetween(e.startDate, e.endDate ?? today),
+          dismissalReason: e.dismissalReason ?? null, dismissalReasonLabel: e.dismissalReason ? DISMISSAL_LABELS[e.dismissalReason] : null,
+          dismissalNote: e.dismissalNote ?? null,
+          evaluation: e.evaluation ? {
+            id: index + 1, scores: e.evaluation, comment: e.evaluation.comment ?? null,
+            authorName: author?.displayName ?? '', authorJobTitle: author?.jobTitle ?? null, updatedAt: `${e.startDate}T12:00:00`,
+          } : null,
+        }
+      })
+    const discipline = (demo.discipline ?? []).filter((d) => d.employee === key && (own || staff || d.status === 'CONFIRMED'))
+      .map((d, index): DisciplineEntry => ({
+        id: index + 1, companyName: allCompanies.find((c) => c.slug === d.company)?.name ?? null, source: 'EMPLOYER',
+        severity: d.severity, severityLabel: SEVERITY_LABELS[d.severity], title: d.title, description: d.description,
+        occurredOn: d.occurredOn, status: d.status, moderatorComment: d.moderatorComment ?? null,
+      }))
+    return delay({
+      employee: { id: target.id, displayName: target.displayName, jobTitle: target.jobTitle, city: target.city, country: target.country ?? null, avatarUrl: null, memberSince: target.createdAt.slice(0, 10) },
+      score: employeeScore(history.flatMap((h) => h.evaluation ? [h.evaluation.scores] : []), discipline.filter((d) => d.status === 'CONFIRMED').length),
+      totalTenureMonths: history.reduce((sum, h) => sum + h.tenureMonths, 0),
+      companiesCount: new Set(history.map((h) => h.companyId)).size,
+      history,
+      discipline,
+      ownProfile: own,
+    })
+  },
+
+  async createTicket(token: string | null, payload: TicketPayload): Promise<Ticket> {
+    if (payload.website) throw new ApiError(400, 'Не удалось отправить обращение')
+    const user = token ? userFromToken(token) : null
+    const now = new Date().toISOString()
+    const ticket = {
+      id: tickets.length + 1, userId: user?.id ?? null, name: payload.name, email: user?.email ?? payload.email,
+      topic: payload.topic, topicLabel: payload.topic, subject: payload.subject, message: payload.message, status: 'NEW' as const,
+      response: null, handledByName: null, fromRegisteredUser: Boolean(user), createdAt: now, updatedAt: now,
+    }
+    tickets.unshift(ticket)
+    const { userId: _userId, ...rest } = ticket
+    return delay(rest)
+  },
+
+  async myTickets(token: string | null): Promise<Ticket[]> {
+    const user = userFromToken(token)
+    return delay(tickets.filter((t) => t.userId === user.id).map(({ userId: _userId, ...rest }) => rest))
+  },
+
+  async locations(): Promise<Locations> {
+    const counts = new Map<string, number>()
+    companies.forEach((c) => counts.set(`${c.country}|${c.city}`, (counts.get(`${c.country}|${c.city}`) ?? 0) + 1))
+    const cities = CITY_CATALOG.flatMap(([country, list]) => list.map((city) => ({ country, city, companiesCount: counts.get(`${country}|${city}`) ?? 0 })))
+    companies.forEach((c) => {
+      if (!cities.some((x) => x.country === c.country && x.city === c.city)) cities.push({ country: c.country, city: c.city, companiesCount: counts.get(`${c.country}|${c.city}`) ?? 0 })
+    })
+    const perCountry = new Map<string, number>()
+    cities.forEach((c) => perCountry.set(c.country, (perCountry.get(c.country) ?? 0) + c.companiesCount))
+    cities.sort((a, b) => (perCountry.get(b.country) ?? 0) - (perCountry.get(a.country) ?? 0) || a.country.localeCompare(b.country, 'ru'))
+    return delay({ countries: [...new Set(cities.map((c) => c.country))], cities }, 60)
+  },
+}
+
+/** Кабинетные методы подмешиваются в mockApi, чтобы клиент видел единый объект */
+function mockCabinetApiProxy() {
+  return {
+    stats: () => mockCabinetApi.stats(),
+    publicSettings: () => mockCabinetApi.publicSettings(),
+    employeeProfile: (token: string | null, userId: number | null) => mockCabinetApi.employeeProfile(token, userId),
+    createTicket: (token: string | null, payload: TicketPayload) => mockCabinetApi.createTicket(token, payload),
+    myTickets: (token: string | null) => mockCabinetApi.myTickets(token),
+  }
 }
 
 /** Копия правил CandidateRatingCalculator.java */

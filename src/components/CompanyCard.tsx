@@ -31,7 +31,9 @@ export function CompanyCard({ company, index }: Props) {
     >
       <div className={styles.main}>
         <div className={styles.identity}>
-          <span className={styles.glyph} aria-hidden="true">{company.name.charAt(0)}</span>
+          {company.logoUrl
+            ? <img className={styles.glyph} src={company.logoUrl} alt="" style={{ objectFit: 'cover' }} />
+            : <span className={styles.glyph} aria-hidden="true">{company.name.charAt(0)}</span>}
           <div className={styles.titleBlock}>
             <h3><Link className={styles.stretched} to={`/companies/${company.slug}`}>{company.name}</Link></h3>
             <p className={styles.location}><MapPin size={13} aria-hidden="true" /> {company.city}, {company.country}{company.industry && <><span aria-hidden="true">·</span>{company.industry}</>}</p>

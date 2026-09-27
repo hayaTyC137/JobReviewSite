@@ -68,6 +68,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     acceptToken: async (nextToken) => {
       const me = await api.me(nextToken)
       applySession(nextToken, me)
+      return me
+    },
+    updateUser: (next) => setUser(next),
+    refreshUser: async () => {
+      if (token) setUser(await api.me(token))
     },
     logout: () => {
       writeToken(null)

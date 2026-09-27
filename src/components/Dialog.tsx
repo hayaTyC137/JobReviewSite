@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { X } from 'lucide-react'
+import { AuthBackdrop } from './AuthBackdrop'
 import styles from './Dialog.module.css'
 
 type Props = {
@@ -12,13 +13,16 @@ type Props = {
   onClose: () => void
   children: ReactNode
   width?: number
+  /** auth — окно входа: матовое стекло, световой контур и анимированный фон */
+  variant?: 'default' | 'auth'
 }
 
 /**
  * Модальное окно: закрывается по Escape и клику по фону, возвращает фокус на кнопку,
  * которая его открыла, и не даёт табу уйти за пределы окна.
  */
-export function Dialog({ open, title, subtitle, onClose, children, width = 520 }: Props) {
+export function Dialog({ open, title, subtitle, onClose, children, width = 520, variant = 'default' }: Props) {
+  const auth = variant === 'auth'
   const panelRef = useRef<HTMLDivElement>(null)
   const reduceMotion = useReducedMotion()
   // Храним колбэк в ref, чтобы эффект не перезапускался (и не сбивал фокус) при каждом рендере родителя
@@ -59,24 +63,25 @@ export function Dialog({ open, title, subtitle, onClose, children, width = 520 }
     <AnimatePresence>
       {open && (
         <motion.div
-          className={styles.backdrop}
+          className={`${styles.backdrop} ${auth ? styles.backdropAuth : ''}`}
           onMouseDown={(event) => { if (event.target === event.currentTarget) onClose() }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.18 }}
         >
+          {auth && <AuthBackdrop />}
           <motion.div
             ref={panelRef}
-            className={styles.panel}
+            className={`${styles.panel} ${auth ? styles.panelAuth : ''}`}
             style={{ maxWidth: width }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="dialog-title"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: 8 }}
-            transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
+            initial={reduceMotion ? false : auth ? { opacity: 0, y: 22, scale: 0.97, filter: 'blur(6px)' } : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            exit={reduceMotion ? undefined : { opacity: 0, y: 8, scale: auth ? 0.98 : 1 }}
+            transition={{ duration: auth ? 0.42 : 0.26, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className={styles.head}>
               <div>

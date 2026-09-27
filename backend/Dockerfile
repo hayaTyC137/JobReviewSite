@@ -9,7 +9,8 @@ RUN mvn -B -q package -DskipTests
 
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
-RUN addgroup -S app && adduser -S app -G app
+# Каталог загрузок принадлежит пользователю приложения: именованный том унаследует права при создании
+RUN addgroup -S app && adduser -S app -G app && mkdir -p /data/uploads && chown -R app:app /data
 COPY --from=build /app/target/*.jar app.jar
 USER app
 EXPOSE 8080

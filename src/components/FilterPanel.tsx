@@ -60,7 +60,11 @@ export function FilterPanel({ filters, locations, activeCount, onChange, onReset
           <span>Город</span>
           <select value={filters.city ?? ''} onChange={(e) => onChange({ city: e.target.value || undefined })}>
             <option value="">Все города</option>
-            {cities.map((c) => <option key={`${c.country}-${c.city}`} value={c.city}>{c.city}</option>)}
+            {cities.map((c) => (
+              <option key={`${c.country}-${c.city}`} value={c.city}>
+                {c.city}{c.companiesCount !== undefined ? ` · ${c.companiesCount}` : ''}
+              </option>
+            ))}
           </select>
         </label>
       </div>

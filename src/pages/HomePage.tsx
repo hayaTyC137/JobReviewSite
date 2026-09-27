@@ -15,8 +15,6 @@ import {
   Eye,
   FileCheck2,
   Flag,
-  LogIn,
-  LogOut,
   Menu,
   MessageSquareText,
   Search,
@@ -29,8 +27,11 @@ import {
 } from 'lucide-react'
 import { api } from '../api/client'
 import type { CompanySummary } from '../api/types'
-import { useAuth } from '../auth/authContext'
-import { initials } from '../lib/format'
+import { HomeFaq } from '../components/home/HomeFaq'
+import { HomeStats } from '../components/home/HomeStats'
+import { RatingSimulator } from '../components/home/RatingSimulator'
+import { UserMenu } from '../components/UserMenu'
+import '../components/home/HomeSections.css'
 import officeImage from '../assets/office.jpg'
 import trustImage from '../assets/trust-handshake.jpg'
 import workImage from '../assets/work-station.jpg'
@@ -100,7 +101,6 @@ const hasCompanyData = true
 export function HomePage() {
   const prefersReducedMotion = useReducedMotion() ?? false
   const navigate = useNavigate()
-  const { user, openLogin, logout } = useAuth()
   const [mode, setMode] = useState<Mode>('candidate')
   const [query, setQuery] = useState('')
   const [suggestions, setSuggestions] = useState<CompanySummary[]>([])
@@ -128,16 +128,16 @@ export function HomePage() {
     const scanAnimation = animate('.hero-scan-rule', {
       scaleX: [0, 1],
       opacity: [0, 0.85],
-      duration: 1300,
-      delay: 380,
+      duration: 800,
+      delay: 180,
       ease: 'outExpo',
     })
 
     const tickerAnimation = animate('.trust-ticker > div', {
       y: [12, 0],
       opacity: [0, 1],
-      delay: stagger(100, { start: 650 }),
-      duration: 850,
+      delay: stagger(60, { start: 320 }),
+      duration: 520,
       ease: 'outExpo',
     })
     return () => {
@@ -221,7 +221,7 @@ export function HomePage() {
           marqueeMomentumRef.current *= Math.pow(0.9, delta / 16)
         } else {
           marqueeMomentumRef.current = 0
-          marqueeOffsetRef.current = wrapMarqueeOffset(marqueeOffsetRef.current - 0.018 * delta)
+          marqueeOffsetRef.current = wrapMarqueeOffset(marqueeOffsetRef.current - 0.034 * delta)
         }
         renderMarqueeOffset()
       }
@@ -249,14 +249,14 @@ export function HomePage() {
       anchors: true,
       autoRaf: true,
       infinite: false,
-      // A lower lerp and wheel multiplier keep the page deliberately calm;
-      // reveal effects can then replay naturally when the user scrolls back.
-      lerp: 0.045,
+      // Плавность сохраняем, но страница откликается быстрее: колесо прокручивает почти как нативно,
+      // догоняющая интерполяция короче — анимации появления срабатывают без «ватной» задержки
+      lerp: 0.11,
       smoothWheel: true,
       syncTouch: true,
-      syncTouchLerp: 0.038,
-      touchMultiplier: 0.72,
-      wheelMultiplier: 0.48,
+      syncTouchLerp: 0.085,
+      touchMultiplier: 1,
+      wheelMultiplier: 0.95,
     })
 
     return () => lenis.destroy()
@@ -287,12 +287,12 @@ export function HomePage() {
         setPlaceholderText(phrase.slice(0, characterIndex))
         if (characterIndex === phrase.length) {
           removing = true
-          timerId = window.setTimeout(tick, 1350)
+          timerId = window.setTimeout(tick, 900)
           return
         }
       }
 
-      timerId = window.setTimeout(tick, removing ? 42 : 82)
+      timerId = window.setTimeout(tick, removing ? 26 : 55)
     }
 
     tick()
@@ -439,19 +439,12 @@ export function HomePage() {
           <Link to="/companies">Компании</Link>
           <a href="#reviews">Отзывы</a>
           <a href="#for-hr">Для HR</a>
+          <a href="#faq">Вопросы</a>
+          <Link to="/contact">Контакты</Link>
         </nav>
 
         <div className="header-actions">
-          {user ? (
-            <button className="profile-button" type="button" aria-label={`Выйти из аккаунта ${user.displayName}`} title="Выйти" onClick={() => { logout(); showNotice('Вы вышли из аккаунта') }}>
-              <span>{initials(user.displayName)}</span>
-              <LogOut size={15} aria-hidden="true" />
-            </button>
-          ) : (
-            <button className="profile-button login" type="button" onClick={() => openLogin()}>
-              <LogIn size={15} aria-hidden="true" /> Войти
-            </button>
-          )}
+          <UserMenu onLogout={() => showNotice('Вы вышли из аккаунта')} />
           <button
             className="icon-button mobile-menu-button"
             type="button"
@@ -479,6 +472,8 @@ export function HomePage() {
               <Link onClick={() => setMenuOpen(false)} to="/companies">Компании</Link>
               <a onClick={() => setMenuOpen(false)} href="#reviews">Отзывы</a>
               <a onClick={() => setMenuOpen(false)} href="#for-hr">Для HR</a>
+              <a onClick={() => setMenuOpen(false)} href="#faq">Вопросы</a>
+              <Link onClick={() => setMenuOpen(false)} to="/contact">Контакты</Link>
             </motion.nav>
           )}
         </AnimatePresence>
@@ -507,7 +502,7 @@ export function HomePage() {
             className="hero-copy"
             initial={prefersReducedMotion ? false : 'hidden'}
             animate="visible"
-            transition={prefersReducedMotion ? { duration: 0 } : { staggerChildren: 0.11, delayChildren: 0.12 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { staggerChildren: 0.065, delayChildren: 0.05 }}
           >
             <motion.div className="eyebrow" variants={reveal}>
               <span className="live-dot" />
@@ -564,7 +559,7 @@ export function HomePage() {
             className="hero-stage"
             initial={prefersReducedMotion ? false : { opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: prefersReducedMotion ? 0 : 0.7, delay: prefersReducedMotion ? 0 : 0.25 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : 0.1 }}
           >
             <div className="stage-image-wrap">
               <img src={officeImage} decoding="async" alt="Рабочее пространство компании" />
@@ -579,7 +574,7 @@ export function HomePage() {
               onMouseMove={handleTilt}
               onMouseLeave={() => setTilt({ x: 0, y: 0 })}
               animate={prefersReducedMotion ? { rotateX: 0, rotateY: 0, y: 0 } : { rotateX: tilt.x, rotateY: tilt.y, y: heroInView ? [0, -7, 0] : 0 }}
-              transition={prefersReducedMotion ? { duration: 0 } : { y: { repeat: Infinity, duration: 4.4, ease: 'easeInOut' }, rotateX: { duration: 0.2 }, rotateY: { duration: 0.2 } }}
+              transition={prefersReducedMotion ? { duration: 0 } : { y: { repeat: Infinity, duration: 3.2, ease: 'easeInOut' }, rotateX: { duration: 0.15 }, rotateY: { duration: 0.15 } }}
               style={{ transformStyle: 'preserve-3d' }}
             >
               <div className="report-card-top">
@@ -620,7 +615,7 @@ export function HomePage() {
               className="stage-callout"
               initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: prefersReducedMotion ? 0 : 0.35, delay: prefersReducedMotion ? 0 : 0.9 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.3, delay: prefersReducedMotion ? 0 : 0.45 }}
             >
               <span className="callout-icon"><FileCheck2 size={16} /></span>
               <div><strong>{hasCompanyData ? 'Факты сверены' : 'Проверка нужна'}</strong><span>{hasCompanyData ? 'по 11 источникам' : 'данные ещё не сверены'}</span></div>
@@ -655,7 +650,7 @@ export function HomePage() {
             initial={prefersReducedMotion ? false : 'hidden'}
             whileInView={prefersReducedMotion ? undefined : 'visible'}
             variants={fragmentReveal}
-            transition={{ duration: prefersReducedMotion ? 0 : 0.65, ease: 'easeOut' }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.42, ease: 'easeOut' }}
             viewport={{ once: false, amount: 0.2 }}
           >
             <div
@@ -735,7 +730,7 @@ export function HomePage() {
             initial={prefersReducedMotion ? false : 'hidden'}
             whileInView={prefersReducedMotion ? undefined : 'visible'}
             variants={fragmentReveal}
-            transition={{ duration: prefersReducedMotion ? 0 : 0.65, delay: prefersReducedMotion ? 0 : 0.12, ease: 'easeOut' }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.42, delay: prefersReducedMotion ? 0 : 0.06, ease: 'easeOut' }}
             viewport={{ once: false, amount: 0.25 }}
           >
             <div className="evidence-image"><img src={workImage} loading="lazy" decoding="async" alt="Специалист за рабочим местом" /></div>
@@ -779,6 +774,9 @@ export function HomePage() {
         </div>
       </section>
 
+      <HomeStats />
+      <RatingSimulator />
+
       <section className="reviews-section" id="reviews">
         <div className="reviews-head">
           <div><p className="section-kicker">Живые отзывы</p><h2>Голоса тех, кто был внутри.</h2></div>
@@ -792,7 +790,7 @@ export function HomePage() {
               initial={prefersReducedMotion ? false : 'hidden'}
               whileInView={prefersReducedMotion ? undefined : 'visible'}
               variants={fragmentReveal}
-              transition={{ duration: prefersReducedMotion ? 0 : 0.35, delay: prefersReducedMotion ? 0 : index * 0.08 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.28, delay: prefersReducedMotion ? 0 : index * 0.05 }}
               viewport={{ once: false, amount: 0.3 }}
             >
               <div className="review-top"><span className="avatar">{review.initials}</span><div><strong>{review.role}</strong><small><Clock3 size={13} /> {review.date}</small></div><span className="review-score">{review.score} <Star size={13} fill="currentColor" /></span></div>
@@ -802,6 +800,8 @@ export function HomePage() {
           ))}
         </div>
       </section>
+
+      <div id="faq"><HomeFaq /></div>
 
       <section className="cta-section">
         <div><span className="cta-index">Контур / 01</span><h2>Следующая работа<br />должна быть вашей.</h2></div>
@@ -815,7 +815,7 @@ export function HomePage() {
 
       <footer className="site-footer">
         <a className="brand" href="#top"><span className="brand-mark"><ShieldCheck size={17} strokeWidth={2.3} /></span><span>контур</span></a>
-        <p>Рынок труда, в котором выбор основан на фактах.</p>
+        <p>Рынок труда, в котором выбор основан на фактах. <Link to="/contact">Связаться с нами</Link></p>
         <span>© 2026 Контур</span>
       </footer>
 

@@ -11,6 +11,9 @@
 /* ---------- Шапка ---------- */
 .head { align-items: flex-end; display: flex; gap: 24px; justify-content: space-between; padding: 22px 0 18px; }
 .identity { align-items: center; display: flex; gap: 20px; min-width: 0; }
+.banner { background-color: var(--c-deep); background-position: center; background-size: cover; height: clamp(120px, 18vw, 240px); }
+.logo { background: var(--c-surface-raised); border: 1px solid var(--c-line); flex: 0 0 auto; height: 84px; object-fit: cover; width: 84px; }
+.repItem { align-items: center; display: inline-flex; gap: 6px; }
 .glyph { align-items: center; background: var(--c-deep); color: var(--c-accent-hover); display: inline-flex; flex: 0 0 auto; font-size: 40px; font-weight: 750; height: 84px; justify-content: center; width: 84px; }
 .head h1 { font-size: clamp(34px, 5vw, 58px); font-weight: 750; letter-spacing: -.035em; line-height: 1; margin: 8px 0 8px; overflow-wrap: anywhere; }
 .legal { color: var(--c-muted); font-size: 14px; margin: 0; }

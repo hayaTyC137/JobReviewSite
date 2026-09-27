@@ -1,6 +1,7 @@
 # Основная конфигурация бэкенда. Все секреты и адреса берутся из переменных окружения,
 # значения по умолчанию подходят для локального запуска рядом с docker-compose.
-# Вход через Google включается профилем oauth: SPRING_PROFILES_ACTIVE=oauth (+ GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET).
+# Вход через соцсети включается автоматически для каждого провайдера, у которого заданы ключи
+# (GOOGLE_CLIENT_ID/SECRET, GITHUB_…, FACEBOOK_…, YANDEX_…, LINKEDIN_…).
 server:
   port: 8080
   # Нужно, чтобы за nginx/vite-прокси OAuth2 правильно строил redirect_uri
@@ -24,6 +25,11 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+  servlet:
+    multipart:
+      # Аватары, логотипы и баннеры; сервис дополнительно проверяет тип файла по сигнатуре
+      max-file-size: 2MB
+      max-request-size: 3MB
 
 app:
   jwt:
@@ -36,6 +42,30 @@ app:
   demo-data:
     enabled: ${DEMO_DATA:true}
     password: ${DEMO_PASSWORD:demo12345}
+  # Первый администратор для «чистой» установки без демо-данных. Создаётся, только если в базе нет ни одного ADMIN
+  bootstrap-admin:
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+  uploads:
+    dir: ${UPLOADS_DIR:./data/uploads}
+  rate-limit:
+    enabled: ${RATE_LIMIT_ENABLED:true}
+  oauth:
+    google:
+      client-id: ${GOOGLE_CLIENT_ID:}
+      client-secret: ${GOOGLE_CLIENT_SECRET:}
+    github:
+      client-id: ${GITHUB_CLIENT_ID:}
+      client-secret: ${GITHUB_CLIENT_SECRET:}
+    facebook:
+      client-id: ${FACEBOOK_CLIENT_ID:}
+      client-secret: ${FACEBOOK_CLIENT_SECRET:}
+    yandex:
+      client-id: ${YANDEX_CLIENT_ID:}
+      client-secret: ${YANDEX_CLIENT_SECRET:}
+    linkedin:
+      client-id: ${LINKEDIN_CLIENT_ID:}
+      client-secret: ${LINKEDIN_CLIENT_SECRET:}
 
 springdoc:
   swagger-ui:

@@ -33,10 +33,24 @@ services:
       FRONTEND_URL: http://localhost:3000
       CORS_ORIGINS: http://localhost:3000,http://localhost:5173
       DEMO_DATA: ${DEMO_DATA:-true}
-      # Чтобы включить вход через Google: SPRING_PROFILES_ACTIVE=oauth + ключи в .env
-      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-default}
+      # Первый администратор для установки без демо-данных (создаётся, если в базе нет ни одного ADMIN)
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      UPLOADS_DIR: /data/uploads
+      # Вход через соцсети: провайдер включается сам, если заданы оба ключа
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+      FACEBOOK_CLIENT_ID: ${FACEBOOK_CLIENT_ID:-}
+      FACEBOOK_CLIENT_SECRET: ${FACEBOOK_CLIENT_SECRET:-}
+      YANDEX_CLIENT_ID: ${YANDEX_CLIENT_ID:-}
+      YANDEX_CLIENT_SECRET: ${YANDEX_CLIENT_SECRET:-}
+      LINKEDIN_CLIENT_ID: ${LINKEDIN_CLIENT_ID:-}
+      LINKEDIN_CLIENT_SECRET: ${LINKEDIN_CLIENT_SECRET:-}
+    volumes:
+      # Аватары, логотипы и баннеры переживают пересборку контейнера
+      - uploads:/data/uploads
     ports:
       # Порт на хосте меняется через BACKEND_PORT (фронтенд в Docker ходит в бэкенд по внутренней сети)
       - "${BACKEND_PORT:-8080}:8080"
@@ -50,3 +64,4 @@ services:
 
 volumes:
   db-data:
+  uploads:

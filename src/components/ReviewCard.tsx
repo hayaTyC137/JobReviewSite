@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { ChevronDown, Clock3, Flag, ShieldAlert } from 'lucide-react'
+import { ChevronDown, Clock3, Flag, MessageSquareWarning, ShieldAlert } from 'lucide-react'
 import type { Review } from '../api/types'
 import { CRITERIA } from '../lib/criteria'
 import { formatDate } from '../lib/format'
@@ -12,10 +12,12 @@ type Props = {
   review: Review
   canAppeal: boolean
   onAppeal: (review: Review) => void
+  /** Любой вошедший пользователь (кроме автора) может пожаловаться — жалоба уйдёт в центр жалоб */
+  onComplain?: (review: Review) => void
   index?: number
 }
 
-export function ReviewCard({ review, canAppeal, onAppeal, index = 0 }: Props) {
+export function ReviewCard({ review, canAppeal, onAppeal, onComplain, index = 0 }: Props) {
   const [showScores, setShowScores] = useState(false)
   const reduceMotion = useReducedMotion()
   const underAppeal = review.pendingAppeal !== null
@@ -55,6 +57,11 @@ export function ReviewCard({ review, canAppeal, onAppeal, index = 0 }: Props) {
         <button className={styles.textButton} type="button" aria-expanded={showScores} onClick={() => setShowScores((v) => !v)}>
           Оценки по критериям <ChevronDown size={14} aria-hidden="true" className={showScores ? styles.rotated : undefined} />
         </button>
+        {onComplain && (
+          <button className={styles.complainButton} type="button" onClick={() => onComplain(review)}>
+            <MessageSquareWarning size={13} aria-hidden="true" /> Пожаловаться
+          </button>
+        )}
         {canAppeal && !underAppeal && (
           <button className={styles.appealButton} type="button" onClick={() => onAppeal(review)}>
             <Flag size={13} aria-hidden="true" /> Обжаловать

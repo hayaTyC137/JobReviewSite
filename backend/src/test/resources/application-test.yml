@@ -6,3 +6,8 @@ spring:
 app:
   demo-data:
     enabled: true
+  # Лимиты частоты проверяются отдельным unit-тестом, в интеграционных тестах они мешали бы повторным входам
+  rate-limit:
+    enabled: false
+  uploads:
+    dir: ${java.io.tmpdir}/kontur-test-uploads

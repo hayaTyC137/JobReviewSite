@@ -10,6 +10,7 @@ import type { CompanyAnalytics, CompanyDetails, Review } from '../api/types'
 import { isRepresentativeOf, useAuth } from '../auth/authContext'
 import { AppHeader } from '../components/AppHeader'
 import { AppealDialog } from '../components/AppealDialog'
+import { ComplaintDialog } from '../components/ComplaintDialog'
 import { CriteriaComparison } from '../components/charts/CriteriaComparison'
 import { DistributionChart } from '../components/charts/DistributionChart'
 import { TrendChart } from '../components/charts/TrendChart'
@@ -45,6 +46,7 @@ export function CompanyPage() {
   const [asTable, setAsTable] = useState(false)
   const [writeOpen, setWriteOpen] = useState(false)
   const [appealTarget, setAppealTarget] = useState<Review | null>(null)
+  const [complaintTarget, setComplaintTarget] = useState<Review | null>(null)
   const [notice, setNotice] = useState('')
   const [reviewsError, setReviewsError] = useState('')
   // Компания, которая сейчас на экране: ответ по предыдущей (после перехода по ссылке) выбрасываем
@@ -161,13 +163,17 @@ export function CompanyPage() {
     <div className={styles.page}>
       <AppHeader />
 
+      {company.bannerUrl && <div className={styles.banner} style={{ backgroundImage: `url(${company.bannerUrl})` }} aria-hidden="true" />}
+
       <div className={styles.content}>
         <Link className={styles.back} to="/companies"><ArrowLeft size={16} aria-hidden="true" /> К каталогу компаний</Link>
 
         {/* ---------- Шапка компании ---------- */}
         <motion.section className={styles.head} {...reveal()}>
           <div className={styles.identity}>
-            <span className={styles.glyph} aria-hidden="true">{company.name.charAt(0)}</span>
+            {company.logoUrl
+              ? <img className={styles.logo} src={company.logoUrl} alt={`Логотип ${company.name}`} width={84} height={84} />
+              : <span className={styles.glyph} aria-hidden="true">{company.name.charAt(0)}</span>}
             <div>
               <p className={styles.kicker}>{company.industry ?? 'Работодатель'} · {company.city}, {company.country}</p>
               <h1>{company.name}</h1>
@@ -184,8 +190,14 @@ export function CompanyPage() {
           {company.representative ? (
             <>
               <ShieldCheck size={16} aria-hidden="true" />
-              <span>Официальный представитель: <strong>{company.representative.displayName}</strong>{company.representative.jobTitle && `, ${company.representative.jobTitle}`}</span>
-              <VerifiedBadge jobTitle={company.representative.jobTitle} />
+              <span>{(company.representatives?.length ?? 1) > 1 ? 'Официальные представители:' : 'Официальный представитель:'}</span>
+              {(company.representatives ?? [company.representative]).map((rep, index) => (
+                <span key={rep.id} className={styles.repItem}>
+                  <strong>{rep.displayName}</strong>{rep.jobTitle && `, ${rep.jobTitle}`}
+                  <VerifiedBadge jobTitle={rep.jobTitle} />
+                  {index < (company.representatives?.length ?? 1) - 1 && <span aria-hidden="true">·</span>}
+                </span>
+              ))}
             </>
           ) : (
             <span className={styles.muted}>Компания пока не подтвердила представителя на платформе.</span>
@@ -294,7 +306,8 @@ export function CompanyPage() {
           ) : (
             <div className={styles.reviewList}>
               {reviews.map((review, index) => (
-                <ReviewCard key={review.id} review={review} index={index} canAppeal={canAppeal} onAppeal={setAppealTarget} />
+                <ReviewCard key={review.id} review={review} index={index} canAppeal={canAppeal} onAppeal={setAppealTarget}
+                  onComplain={user && user.id !== review.author.id && !canAppeal ? setComplaintTarget : undefined} />
               ))}
             </div>
           )}
@@ -332,6 +345,11 @@ export function CompanyPage() {
           setNotice('Заявка отправлена модераторам. Отзыв помечен как «на проверке».')
           loadReviews().catch(() => undefined)
         }}
+      />
+
+      <ComplaintDialog
+        target={complaintTarget ? { type: 'REVIEW', id: complaintTarget.id, label: `Отзыв ${complaintTarget.author.displayName} о ${company.name}` } : null}
+        onClose={() => setComplaintTarget(null)}
       />
 
       {notice && (
