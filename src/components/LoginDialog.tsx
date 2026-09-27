@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
-import type { FormEvent } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
+import type { FormEvent, ReactNode } from 'react'
+import { useLocation } from 'react-router-dom'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ArrowRight, KeyRound, ShieldCheck } from 'lucide-react'
 import { api, oauthLoginUrl } from '../api/client'
 import { ApiError } from '../api/errors'
@@ -28,6 +29,21 @@ const DEMO_ACCOUNTS = [
  */
 export function LoginDialog() {
   const { loginOpen, loginReason, closeLogin } = useAuth()
+  const { pathname } = useLocation()
+  // Страница, на которой окно открыли. Храним в ref, а closeLogin берём через ref: функция из контекста
+  // пересоздаётся при каждом изменении авторизации, и эффект с ней в зависимостях закрывал бы окно сразу
+  const openedOn = useRef<string | null>(null)
+  const closeRef = useRef(closeLogin)
+  useEffect(() => { closeRef.current = closeLogin }, [closeLogin])
+
+  useEffect(() => { openedOn.current = loginOpen ? pathname : null }, [loginOpen]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Ушли с этой страницы («назад», ссылка) — окно закрывается, а не висит над новой. Если новая страница
+  // сама просит войти (защищённый раздел), она откроет окно уже для себя
+  useEffect(() => {
+    if (openedOn.current !== null && openedOn.current !== pathname) closeRef.current()
+  }, [pathname])
+
   return (
     <Dialog
       open={loginOpen}
@@ -39,6 +55,29 @@ export function LoginDialog() {
     >
       <LoginForm />
     </Dialog>
+  )
+}
+
+/**
+ * Блок, который плавно раскрывается и сворачивается по высоте при смене «Вход / Регистрация».
+ * Отрицательный отступ сверху компенсирует gap сетки формы — в свёрнутом виде блок не оставляет щели.
+ */
+function Collapse({ show, children }: { show: boolean; children: ReactNode }) {
+  const reduceMotion = useReducedMotion()
+  return (
+    <AnimatePresence initial={false}>
+      {show && (
+        <motion.div
+          style={{ overflow: 'hidden' }}
+          initial={{ height: 0, opacity: 0, marginTop: -15 }}
+          animate={{ height: 'auto', opacity: 1, marginTop: 0 }}
+          exit={{ height: 0, opacity: 0, marginTop: -15 }}
+          transition={{ duration: reduceMotion ? 0 : 0.26, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 
@@ -84,7 +123,7 @@ function LoginForm() {
     <form className={`${styles.form} ${auth.form}`} onSubmit={submit} noValidate>
       <div className={auth.tabs} role="tablist" aria-label="Способ входа">
         {(['login', 'register'] as Mode[]).map((value) => (
-          <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => setMode(value)}>
+          <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => { setMode(value); setError(''); setFieldErrors({}) }}>
             {mode === value && (
               <motion.span
                 className={auth.tabIndicator}
@@ -111,13 +150,13 @@ function LoginForm() {
         </>
       )}
 
-      {mode === 'register' && (
+      <Collapse show={mode === 'register'}>
         <label className={styles.field}>
           <span className={styles.label}>Имя для отзывов</span>
           <input className={inputClass} value={displayName} onChange={(e) => setDisplayName(e.target.value)} autoComplete="nickname" placeholder="Например, Мария П." required aria-invalid={Boolean(fieldErrors.displayName)} />
           {fieldErrors.displayName && <span className={styles.fieldError}>{fieldErrors.displayName}</span>}
         </label>
-      )}
+      </Collapse>
 
       <label className={styles.field}>
         <span className={styles.label}>Email</span>
@@ -132,15 +171,17 @@ function LoginForm() {
         {fieldErrors.password && <span className={styles.fieldError}>{fieldErrors.password}</span>}
       </label>
 
-      {mode === 'register' && (
+      <Collapse show={mode === 'register'}>
         <label className={styles.field}>
           <span className={styles.label}>Должность <span className={styles.hint}>(необязательно)</span></span>
           <input className={inputClass} value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} autoComplete="organization-title" />
           <span className={styles.hint}>Заполненный профиль повышает ваш рейтинг кандидатской активности.</span>
         </label>
-      )}
+      </Collapse>
 
-      {error && <p className={styles.error} role="alert">{error}</p>}
+      <Collapse show={Boolean(error)}>
+        <p className={styles.error} role="alert">{error}</p>
+      </Collapse>
 
       <button className={`${styles.primary} ${styles.wide} ${auth.submit}`} type="submit" disabled={busy}>
         <KeyRound size={16} aria-hidden="true" /> {busy ? 'Проверяем…' : mode === 'login' ? 'Войти' : 'Создать аккаунт'}
@@ -149,7 +190,7 @@ function LoginForm() {
 
       <p className={auth.trust}><ShieldCheck size={14} aria-hidden="true" /> Работодатель не узнает, что вы проверяли компанию.</p>
 
-      {mode === 'login' && (
+      <Collapse show={mode === 'login'}>
         <div className={styles.demoAccounts}>
           <p>Демо-аккаунты (пароль <code>demo12345</code>):</p>
           <ul>
@@ -160,7 +201,7 @@ function LoginForm() {
             ))}
           </ul>
         </div>
-      )}
+      </Collapse>
     </form>
   )
 }

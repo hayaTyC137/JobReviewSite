@@ -31,6 +31,7 @@ import { HomeFaq } from '../components/home/HomeFaq'
 import { HomeStats } from '../components/home/HomeStats'
 import { RatingSimulator } from '../components/home/RatingSimulator'
 import { UserMenu } from '../components/UserMenu'
+import { onScrollLockChange } from '../lib/scrollLock'
 import '../components/home/HomeSections.css'
 import officeImage from '../assets/office.jpg'
 import trustImage from '../assets/trust-handshake.jpg'
@@ -259,7 +260,14 @@ export function HomePage() {
       wheelMultiplier: 0.95,
     })
 
-    return () => lenis.destroy()
+    // Пока открыто модальное окно (вход, отзыв, жалоба), плавная прокрутка стоит на паузе —
+    // иначе Lenis прокручивал бы страницу под окном
+    const unsubscribe = onScrollLockChange((locked) => (locked ? lenis.stop() : lenis.start()))
+
+    return () => {
+      unsubscribe()
+      lenis.destroy()
+    }
   }, [prefersReducedMotion])
 
   useEffect(() => {

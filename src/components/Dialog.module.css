@@ -1,5 +1,6 @@
-.backdrop { align-items: flex-start; background: rgba(18, 14, 11, .56); display: flex; inset: 0; justify-content: center; overflow-y: auto; padding: max(48px, 8vh) 16px 32px; position: fixed; z-index: 60; }
-.panel { background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 24px 60px rgba(18, 14, 11, .28); color: var(--c-ink); width: 100%; }
+.backdrop { align-items: flex-start; background: rgba(18, 14, 11, .56); display: flex; inset: 0; justify-content: center; overflow-y: auto; overscroll-behavior: contain; padding: max(48px, 8vh) 16px 32px; position: fixed; z-index: 60; }
+/* Панель не сжимается: высокое окно прокручивается внутри фона, а не обрезается */
+.panel { flex-shrink: 0; background: var(--c-surface-raised); border: 1px solid var(--c-line); box-shadow: 0 24px 60px rgba(18, 14, 11, .28); color: var(--c-ink); width: 100%; }
 .head { align-items: flex-start; border-bottom: 1px solid var(--c-line-soft); display: flex; gap: 16px; justify-content: space-between; padding: 22px 24px 18px; }
 .head h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; margin: 0; }
 .subtitle { color: var(--c-muted); font-size: 13px; line-height: 1.45; margin-top: 6px; }
@@ -13,7 +14,11 @@
    Глубина — многослойная тень (контактная + рассеянная + дальняя), контур — тонкое тёплое свечение. */
 @property --glow-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 
-.backdropAuth { align-items: center; background: rgba(18, 14, 11, .72); }
+/* Центрируем через auto-отступы, а не align-items: center. Если окно выше экрана, auto-отступы
+   схлопываются в ноль и верх окна с крестиком остаётся доступен — при align-items: center
+   он уезжал за верхний край, куда прокрутить нельзя */
+.backdropAuth { background: rgba(18, 14, 11, .8); padding: 24px 16px; }
+.backdropAuth .panelAuth { margin-block: auto; }
 .panelAuth {
   -webkit-backdrop-filter: blur(22px) saturate(1.35);
   backdrop-filter: blur(22px) saturate(1.35);
@@ -26,14 +31,14 @@
     0 12px 28px -10px rgba(18, 14, 11, .38),
     0 42px 90px -24px rgba(18, 14, 11, .6),
     0 0 0 1px rgba(244, 162, 97, .18),
-    0 0 38px -6px rgba(244, 162, 97, .45);
+    0 0 32px -8px rgba(244, 162, 97, .38);
   isolation: isolate;
   position: relative;
   z-index: 1;
 }
 /* Световой контур: вращающийся конический градиент, видимый только по кромке (mask) */
 .panelAuth::before {
-  animation: glow-spin 9s linear infinite;
+  animation: glow-spin 16s linear infinite;
   background: conic-gradient(from var(--glow-angle), rgba(244, 162, 97, 0) 0deg, rgba(244, 162, 97, .95) 70deg, rgba(247, 183, 127, .2) 140deg, rgba(63, 122, 140, .55) 220deg, rgba(244, 162, 97, 0) 300deg);
   border-radius: inherit;
   content: "";
@@ -49,10 +54,12 @@
 @keyframes glow-spin { to { --glow-angle: 360deg; } }
 .panelAuth .head { border-bottom-color: rgba(168, 146, 127, .25); }
 .panelAuth .head h2 { font-size: 22px; letter-spacing: -.02em; }
-.panelAuth .close { border-radius: 2px 12px 2px 12px; }
+.panelAuth .close { border-radius: 2px 12px 2px 12px; color: var(--c-ink-soft); transition: background .15s ease, color .15s ease, transform .2s ease; }
+.panelAuth .close:hover { background: rgba(232, 218, 203, .7); color: var(--c-ink); transform: rotate(90deg); }
 
 @media (prefers-reduced-motion: reduce) {
   .panelAuth::before { animation: none; }
+  .panelAuth .close:hover { transform: none; }
 }
 
 @supports not (backdrop-filter: blur(1px)) {
@@ -61,6 +68,7 @@
 
 @media (max-width: 520px) {
   .panelAuth { border-radius: 4px 20px 4px 20px; }
+  .backdropAuth { padding: 12px 10px; }
   .backdrop { padding: 16px 10px; }
   .head, .body { padding-inline: 18px; }
 }

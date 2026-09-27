@@ -7,13 +7,14 @@ function seeded(index: number, salt: number): number {
   return x - Math.floor(x)
 }
 
-const PARTICLES = Array.from({ length: 22 }, (_, i) => ({
+// Немного частиц и низкая яркость: фон должен ощущаться, а не отвлекать от формы
+const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
   left: `${Math.round(seeded(i, 1) * 100)}%`,
   size: `${2 + Math.round(seeded(i, 2) * 4)}px`,
-  duration: `${14 + Math.round(seeded(i, 3) * 16)}s`,
+  duration: `${18 + Math.round(seeded(i, 3) * 16)}s`,
   delay: `${-Math.round(seeded(i, 4) * 28)}s`,
   drift: `${Math.round((seeded(i, 5) - 0.5) * 120)}px`,
-  opacity: 0.25 + seeded(i, 6) * 0.45,
+  opacity: 0.18 + seeded(i, 6) * 0.3,
 }))
 
 /**

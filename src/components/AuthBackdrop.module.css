@@ -1,7 +1,7 @@
 /* Фон окна входа: мягкие пятна тёплого света и всплывающие частицы. Только transform и opacity. */
 .root { inset: 0; overflow: hidden; pointer-events: none; position: fixed; z-index: 0; }
 
-.blob { border-radius: 50%; filter: blur(64px); opacity: .55; position: absolute; will-change: transform; }
+.blob { border-radius: 50%; filter: blur(64px); opacity: .32; position: absolute; will-change: transform; }
 .blobA {
   animation: drift-a 22s ease-in-out infinite alternate;
   background: radial-gradient(circle at 40% 40%, rgba(244, 162, 97, .9), rgba(244, 162, 97, 0) 68%);
@@ -15,7 +15,7 @@
 .blobC {
   animation: drift-c 31s ease-in-out infinite alternate;
   background: radial-gradient(circle, rgba(247, 183, 127, .55), rgba(247, 183, 127, 0) 70%);
-  height: 30vmax; left: 38%; opacity: .4; top: 44%; width: 30vmax;
+  height: 30vmax; left: 38%; opacity: .24; top: 44%; width: 30vmax;
 }
 
 @keyframes drift-a { to { transform: translate3d(14vmax, 10vmax, 0) scale(1.12); } }
